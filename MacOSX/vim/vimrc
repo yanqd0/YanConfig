@@ -229,5 +229,5 @@ hi default BookmarkCol ctermfg=blue ctermbg=lightblue cterm=bold guifg=DarkBlue 
 sign define MyBookmark linehl=BookmarkCol
 
 " maps
-nnoremap <Leader>rc :so ~/.vimrc<CR>
-nnoremap <Leader>oc :e ~/.vimrc<CR>
+nnoremap <Leader>rc :so ~/.vim/vimrc<CR>
+nnoremap <Leader>oc :tabnew ~/.vim/vimrc<CR>
