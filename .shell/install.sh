@@ -2,23 +2,35 @@
 
 CONFIG_DIR="MacOSX"
 
-function install_before_check {
-file=$1
-TARGET_FILE=$2/$file
+function sh_main {
+echo install begin
+echo -------------
 
-if [ -f $TARGET_FILE ]; then
-    echo $TARGET_FILE exists!
-    echo Try make update instead.
-    exit
+install_vimrc
+
+echo -------------
+echo install end
+}
+
+function install_vimrc {
+file_list=`ls $CONFIG_DIR/vim/`
+for file in $file_list
+do
+    install_before_check $CONFIG_DIR/vim/$file ~/.vim/$file
+done
+}
+
+function install_before_check {
+source_file=$1
+target_file=$2
+
+if [ -f $target_file ]; then
+    echo $target_file exists! Try make update instead.
 else
-    cp $CONFIG_DIR/vim/$file $TARGET_FILE
-    echo $TARGET_FILE is installed.
+    cp $source_file $target_file
+    echo $target_file is installed.
 fi
 }
 
-FILE_LIST=`ls $CONFIG_DIR/vim/`
-for file in $FILE_LIST
-do
-    install_before_check $file ~/.vim
-done
-echo Done.
+# execute
+sh_main
