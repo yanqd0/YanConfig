@@ -7,5 +7,5 @@ install:
 	@.python/install.py
 
 update:
-	@source ".shell/update.sh"
+	@.python/update.py
 
