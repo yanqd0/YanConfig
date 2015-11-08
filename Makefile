@@ -4,7 +4,7 @@ Default:
 	@echo "  make update:       Update if previous config files found."
 
 install:
-	@source ".shell/install.sh"
+	@.python/install.py
 
 update:
 	@source ".shell/update.sh"
