@@ -3,7 +3,7 @@
 CONFIG_DIR="MacOSX"
 
 TARGET_VIM=~/.vim
-VIM_LIST=`ls $CONFIG_DIR/vim/`
+VIM_LIST=`ls $CONFIG_DIR/.vim/`
 
 function sh_main {
 break_if_not_exist $VIM_LIST
@@ -31,7 +31,7 @@ done
 function update_vimrc {
 for file in $VIM_LIST
 do
-    cp $CONFIG_DIR/vim/$file $TARGET_VIM/$file
+    cp $CONFIG_DIR/.vim/$file $TARGET_VIM/$file
     echo ~/.vim/$file is updated.
 done
 }

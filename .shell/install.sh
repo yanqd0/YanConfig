@@ -13,10 +13,10 @@ echo install end
 }
 
 function install_vimrc {
-file_list=`ls $CONFIG_DIR/vim/`
+file_list=`ls $CONFIG_DIR/.vim/`
 for file in $file_list
 do
-    install_before_check $CONFIG_DIR/vim/$file ~/.vim/$file
+    install_before_check $CONFIG_DIR/.vim/$file ~/.vim/$file
 done
 }
 
