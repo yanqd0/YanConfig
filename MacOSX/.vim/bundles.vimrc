@@ -29,6 +29,13 @@ Plugin 'ervandew/supertab'
 
 Plugin 'tomasr/molokai', {'rtp': './'}
 
+Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_indent_levels = 10
+
+" for help windows
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -43,7 +50,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_mruf_max = 250
 let g:ctrlp_lazy_update = 0
 
-" for help windows
 Plugin 'majutsushi/tagbar'
 nmap <silent> <F7> :TagbarToggle<CR>
 
@@ -72,10 +78,6 @@ let g:syntastic_check_on_wq = 0
 
 " for move faster
 Plugin 'Lokaltog/vim-easymotion'
-highlight link EasyMotionTarget ErrorMsg
-highlight link EasyMotionShade Comment
-highlight link EasyMotionTarget2First Constant
-highlight link EasyMotionTarget2Second Conditional
 
 " for cmd line
 "Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
