@@ -1,0 +1,9 @@
+set guifont=Monospace\ 12
+
+" for markdown
+set textwidth=1000
+
+" molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
