@@ -1,8 +1,8 @@
 filetype off                        " Vundle required!
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Plugin 'gmarik/vundle'              " let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'       " let Vundle manage Vundle
 
 " on vim-scripts
 " for tags
@@ -27,7 +27,7 @@ Plugin 'ervandew/supertab'
 "Plugin 'altercation/solarized'
 "let g:solarized_menu=0
 
-Plugin 'tomasr/molokai', {'rtp': './'}
+Plugin 'tomasr/molokai'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
@@ -113,8 +113,8 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'SirVer/ultisnips'
 
 " Python
-Bundle 'klen/python-mode'
-Bundle 'pythoncomplete'
+Plugin 'klen/python-mode'
+Plugin 'pythoncomplete'
 
 " a special one
 "Plugin 'Valloric/YouCompleteMe'
