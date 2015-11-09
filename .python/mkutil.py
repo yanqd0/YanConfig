@@ -28,7 +28,7 @@ def get_paths_of(dir_name):
 def store_backup_if_exist(src_paths):
     if has_backup():
         print "There is a backup!"
-        print "Try `make uninstall`, `make update`, or `rm -rf .backup` ."
+        print "Try `make uninstall`, `make update`, or `make clean` ."
         exit(1)
     else:
         store_backup(src_paths)
@@ -77,6 +77,7 @@ def get_des_by_src(src):
 def get_bak_by_src(src):
     return src.replace(CONFIG_DIR, BACKUP_DIR)
 
+
 def get_des_by_bak(bak):
     return bak.replace(BACKUP_DIR, os.path.expanduser('~'))
 
@@ -108,3 +109,15 @@ def remove_des_by_src(src_paths):
         if os.path.isfile(des):
             print des, '->'
             os.remove(des)
+
+
+def link_src_to_des(src_paths):
+    for src in src_paths:
+        des = get_des_by_src(src)
+        abs_src = os.path.abspath(src)
+        cmd = 'ln -s ' + abs_src + ' ' + des
+        print cmd
+
+        ret = os.system(cmd)
+        if ret != 0:
+            exit(ret)
