@@ -7,3 +7,17 @@ set textwidth=1000
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
+
+function! LinuxToggleFullScreen()
+    if &guioptions =~#'T'
+        set guioptions-=T
+        set guioptions-=m
+        set guioptions-=r
+        set guioptions-=L
+    endif
+    call system("wmctrl -ir" . v:windowid . " -b toggle,fullscreen")
+endfun
+
+nnoremap <silent> <F11> <ESC>:call LinuxToggleFullScreen()<CR>
+map! <silent> <F11> <ESC>:call LinuxToggleFullScreen()<CR>
+map! <silent> <S-Insert> <C-r>+
