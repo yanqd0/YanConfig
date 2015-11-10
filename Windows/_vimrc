@@ -1,7 +1,7 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-let VIM="E:\Program Files\Vim"
+"let VIM="D:\Program Files\Vim"
 set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 "call vundle#rc()
 call vundle#begin('$VIM/vimfiles/bundle/')
@@ -30,7 +30,6 @@ Plugin 'Gundo'
 
 " on github
 Plugin 'ervandew/supertab'
-"Plugin 'altercation/solarized', {'rtp': 'altercation/solarized/vim-colors-solarized/'}
 "Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -40,11 +39,22 @@ Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-surround'
+Plugin 'chrisbra/csv.vim'
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'kkoenig/wimproved.vim'
+
+" colors
+Plugin 'altercation/solarized', {'rtp': 'vim-colors-solarized'}
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim'}
+Plugin 'tomasr/molokai', {'rtp': '.'}
+
 " for markdown
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 Plugin 'godlygeek/tabular'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'junegunn/goyo.vim'
+"Plugin 'MikeCoder/markdown-preview.vim'
 
 " Python
 Bundle 'klen/python-mode'
@@ -119,8 +129,6 @@ endif               "则将光标定位在退出时所在行
 
 "gui specific
 set guifont=Consolas:h15:cANSI
-nmap to :let @+=@0<CR>
-
 
 "cscope的配置
 set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
@@ -167,11 +175,17 @@ nnoremap <leader>td :TaskList<CR>
 "let g:ConqueTerm_ExecFileKey = '<F5>'
 "nnoremap <silent> <F3> :ConqueTerm bash<CR>
 
+" colors
 " solarized
 "set background=dark
 "let g:solarized_menu=0
 "colorscheme solarized
 "syntax enable
+
+" molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
 
 " TagBar
 nmap <silent> <F7> :TagbarToggle<CR>
@@ -183,7 +197,7 @@ nnoremap <Leader>u :GundoToggle<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files = 30000
-let g:ctrlp_max_depth = 8
+let g:ctrlp_max_depth = 10
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
     \ 'file': '\v\.(exe|so|dll)$',
@@ -246,9 +260,13 @@ function! GvimToggleFullScreen()
     if &guioptions =~#'m'
         set guioptions-=T
         set guioptions-=m
+        set guioptions-=r
+        set guioptions-=L
     else
         set guioptions+=T
         set guioptions+=m
+        set guioptions+=r
+        set guioptions+=L
     endif
     call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
 endfun
