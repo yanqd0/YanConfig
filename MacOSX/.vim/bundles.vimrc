@@ -34,6 +34,8 @@ Plugin 'ervandew/supertab'
 "let g:solarized_menu=0
 
 Plugin 'tomasr/molokai'
+let g:molokai_original = 0
+let g:rehash256 = 0
 
 Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
@@ -55,6 +57,7 @@ let g:ctrlp_custom_ignore = {
             \ }
 let g:ctrlp_mruf_max = 250
 let g:ctrlp_lazy_update = 0
+let g:ctrlp_show_hidden = 1
 
 Plugin 'majutsushi/tagbar'
 nmap <silent> <F7> :TagbarToggle<CR>
