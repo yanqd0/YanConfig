@@ -125,6 +125,9 @@ Plugin 'SirVer/ultisnips'
 Plugin 'klen/python-mode'
 Plugin 'pythoncomplete'
 
+" Vimperator
+Plugin 'superbrothers/vim-vimperator'
+
 " a special one
 "Plugin 'Valloric/YouCompleteMe'
 
