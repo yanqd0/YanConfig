@@ -250,4 +250,4 @@ nnoremap <leader>oc :tabnew ~/.vimrc<CR>
 " some personal high light schemes
 " mg
 hi mg ctermbg=green ctermfg=black
-match mg /yanqd1\|Begin\|End  \|Origin\|Delete\|\t\|\r\|\s\s*\n/
+match mg /\t\|\r\|\s\s*\n/

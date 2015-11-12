@@ -280,6 +280,6 @@ endfun
 " some personal high light schemes
 " mg
 hi mg ctermbg=green ctermfg=yellow
-match mg /yanqd1\|Begin\|End  \|Origin\|Delete\|\t\|\r\|\s\s*\n/
+match mg /\t\|\r\|\s\s*\n/
 nmap <leader>rc :so ~/_vimrc<CR>
 nmap <leader>oc :e ~/_vimrc<CR>
