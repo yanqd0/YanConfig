@@ -13,6 +13,8 @@ import shutil
 CONFIG_DIR = 'MacOSX'
 BACKUP_DIR = '.backup'
 
+ignore_files = []
+
 
 def get_src_paths():
     return get_paths_of(CONFIG_DIR)
@@ -26,9 +28,26 @@ def get_paths_of(dir_name):
     src_paths = []
     for root, dirs, files in os.walk(dir_name):
         for f in files:
-            src_paths.append(root + '/' + f)
-
+            p = root + '/' + f
+            if not in_gitignore(p):
+                src_paths.append(p)
     return src_paths
+
+
+def in_gitignore(f):
+    import re
+    if ignore_files == []:
+        load_ignore_files()
+    for ig in ignore_files:
+        if re.search(ig, f) is not None:
+            return True
+    return False
+
+
+def load_ignore_files():
+    file_list = open('.gitignore')
+    for f in file_list:
+        ignore_files.append(f.strip().replace('*', '.*'))
 
 
 def store_backup_if_exist(src_paths):
@@ -43,11 +62,9 @@ def store_backup_if_exist(src_paths):
 def has_backup():
     if not os.path.isdir(BACKUP_DIR):
         return False
-
     for root, dirs, files in os.walk(BACKUP_DIR):
         if files != []:
             return True
-
     return False
 
 
@@ -63,7 +80,6 @@ def retrieve_backup():
     for bak in bak_paths:
         des = get_des_by_bak(bak)
         move(bak, des)
-
     shutil.rmtree(BACKUP_DIR)
 
 

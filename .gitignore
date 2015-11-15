@@ -1,3 +1,4 @@
 .backup/
 .ropeproject/
 *.pyc
+.DS_Store
