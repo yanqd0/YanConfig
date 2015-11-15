@@ -96,10 +96,12 @@ Plugin 'bling/vim-airline'
 
 " for Git
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 "Plugin 'github/git-lfs'
 
 " for golang
 Plugin 'fatih/vim-go'
+"Plugin 'nsf/gocode'
 
 " for markdown
 Plugin 'godlygeek/tabular'
