@@ -111,6 +111,16 @@ def copy_src_to_des(src_paths):
         shutil.copy2(src, des)
 
 
+def copy_src_to_des_if_new(src_paths):
+    for src in src_paths:
+        des = get_des_by_src(src)
+        src_stat = os.stat(src)
+        des_stat = os.stat(des)
+        if src_stat.st_mtime > des_stat.st_mtime:
+            print src, '=>', des
+            shutil.copy2(src, des)
+
+
 def break_if_des_not_exist(src_paths):
     for src in src_paths:
         des = get_des_by_src(src)

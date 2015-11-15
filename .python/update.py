@@ -14,5 +14,5 @@ if __name__ == '__main__':
 
     mkutil.break_if_des_not_exist(src_paths)
     print '-------- update begin  --------'
-    mkutil.copy_src_to_des(src_paths)
+    mkutil.copy_src_to_des_if_new(src_paths)
     print '-------- update end    --------'
