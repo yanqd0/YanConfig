@@ -7,4 +7,7 @@
 set fullscreen
 set guifont=Monaco:h14
 set textwidth=1000
-set cc=100
+
+" Disable scroll bars
+set guioptions-=r
+set guioptions-=L
