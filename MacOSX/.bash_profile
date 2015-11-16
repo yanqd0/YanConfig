@@ -4,9 +4,6 @@
 # This is free software, and you are welcome to redistribute it under certain
 # conditions; see the LISENSE in the root of this project.
 
-set completion-ignore-case on
-set show-all-if-ambiguous on
-
 # Setting bash-completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion;
