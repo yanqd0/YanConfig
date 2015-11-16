@@ -78,10 +78,22 @@ if has("autocmd")   "如果上次退出时光标不在第一行
 endif               "则将光标定位在退出时所在行
 
 "一些map
-nnoremap <leader>to :let @+=@"<CR>
-nnoremap cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
+nnoremap <leader>lp :let @+=@"<CR>
+nnoremap <leader>cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
 nnoremap <Leader>rc :so ~/.vim/vimrc<CR>
 nnoremap <Leader>oc :tabnew ~/.vim/vimrc<CR>
+
+" Windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
 "cscope的配置
 set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
