@@ -14,6 +14,8 @@ noremap <silent> <C-h> 10h
 noremap <silent> <C-l> 10l
 noremap <silent> v <PageDown>
 noremap <silent> x <PageUp>
+" Toggle javascript enable or not
+noremap ,js :set! javascript.enabled!<CR>:set! javascript.enabled<CR>
 
 highlight Hint::after content: attr(number); font-size:13pt
 highlight Normal color: black; background: white; font-size:14pt
