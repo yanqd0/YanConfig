@@ -40,6 +40,8 @@ alias freq='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 
 alias tm='ps -ef | grep'
 # Set vi as vim
 alias vi='vim'
+# open MacVim app quickly
+alias macvim='open -a MacVim'
 
 # function
 # mkdir and cd into
