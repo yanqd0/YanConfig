@@ -84,6 +84,8 @@ nnoremap <leader>lp :let @+=@"<CR>
 nnoremap <leader>cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
 nnoremap <Leader>rc :so ~/.vim/vimrc<CR>
 nnoremap <Leader>oc :tabnew ~/.vim/vimrc<CR>
+map <F5> :w!<CR>:execute "!python -u %"<CR>
+map! <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>
 
 " Windows
 map <C-j> <C-W>j
