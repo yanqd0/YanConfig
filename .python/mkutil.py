@@ -8,16 +8,36 @@
 # conditions; see the LISENSE in the root of this project.
 
 import os
+import re
 import shutil
+import sys
 
-CONFIG_DIR = 'MacOSX'
+CONFIG_DIR = ''
 BACKUP_DIR = '.backup'
 
 ignore_files = []
 
 
+def get_config_dir():
+    global CONFIG_DIR
+    if CONFIG_DIR is '':
+        pf = sys.platform
+        if re.search('darwin', pf, re.IGNORECASE) is not None:
+            CONFIG_DIR = 'MacOSX'
+        elif re.search('linux', pf, re.IGNORECASE) is not None:
+            CONFIG_DIR = 'Linux'
+        elif re.search('cygwin', pf, re.IGNORECASE) is not None:
+            CONFIG_DIR = 'Linux'
+        elif re.search('win[36][24]', pf, re.IGNORECASE) is not None:
+            CONFIG_DIR = 'Windows'
+        else:
+            CONFIG_DIR = 'Linux'
+        print 'The platform is', pf, 'so use', CONFIG_DIR
+    return CONFIG_DIR
+
+
 def get_src_paths():
-    return get_paths_of(CONFIG_DIR)
+    return get_paths_of(get_config_dir())
 
 
 def get_bak_paths():
@@ -35,7 +55,6 @@ def get_paths_of(dir_name):
 
 
 def in_gitignore(f):
-    import re
     if ignore_files == []:
         load_ignore_files()
     for ig in ignore_files:
@@ -93,11 +112,11 @@ def move(src, des):
 
 
 def get_des_by_src(src):
-    return src.replace(CONFIG_DIR, os.path.expanduser('~'))
+    return src.replace(get_config_dir(), os.path.expanduser('~'))
 
 
 def get_bak_by_src(src):
-    return src.replace(CONFIG_DIR, BACKUP_DIR)
+    return src.replace(get_config_dir(), BACKUP_DIR)
 
 
 def get_des_by_bak(bak):
