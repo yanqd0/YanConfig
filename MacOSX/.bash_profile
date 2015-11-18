@@ -4,6 +4,9 @@
 # This is free software, and you are welcome to redistribute it under certain
 # conditions; see the LISENSE in the root of this project.
 
+# PATH
+PATH=$PATH:Library/Python/2.7/bin
+
 # Setting bash-completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion;
