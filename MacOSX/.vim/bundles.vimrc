@@ -25,9 +25,9 @@ Plugin 'TaskList.vim'
 Plugin 'Gundo'
 nnoremap <Leader>u :GundoToggle<CR>
 
-" on GitHub
 " for completion
 Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 
 " for syntax color
 "Plugin 'altercation/solarized'
@@ -125,14 +125,11 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'SirVer/ultisnips'
 
 " Python
-Plugin 'klen/python-mode'
-Plugin 'pythoncomplete'
+"Plugin 'klen/python-mode'
+"Plugin 'pythoncomplete'
 
 " Vimperator
 Plugin 'superbrothers/vim-vimperator'
-
-" a special one
-"Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on           " Vundle required!
