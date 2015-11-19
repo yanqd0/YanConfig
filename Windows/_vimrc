@@ -259,7 +259,8 @@ sign define MyBookmark linehl=BookmarkCol
 nmap to :let @+=@"<CR>
 nmap cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
 nnoremap <silent> <F12> :set tag=~/.vim/tags/tags<CR>
-nnoremap <silent> <F11> <Esc>:call GvimToggleFullScreen()<CR>
+map <silent> <F11> :call GvimToggleFullScreen()<CR>
+map! <silent> <F11> <Esc>:call GvimToggleFullScreen()<CR>a
 
 " functions
 function! GvimToggleFullScreen()
