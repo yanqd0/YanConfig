@@ -22,9 +22,6 @@ let Tlist_Use_SingleClick=1     "鼠标单击，即可跳转
 
 Plugin 'TaskList.vim'
 
-Plugin 'Gundo'
-nnoremap <Leader>u :GundoToggle<CR>
-
 " for completion
 Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
@@ -59,6 +56,9 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_mruf_max = 250
 let g:ctrlp_lazy_update = 0
 let g:ctrlp_show_hidden = 1
+
+Plugin 'sjl/gundo.vim'
+nnoremap <Leader>u :GundoToggle<CR>
 
 Plugin 'majutsushi/tagbar'
 nmap <silent> <F7> :TagbarToggle<CR>
