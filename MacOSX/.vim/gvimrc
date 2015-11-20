@@ -4,8 +4,8 @@
 " This is free software, and you are welcome to redistribute it under certain
 " conditions; see the LISENSE in the root of this project.
 
-set fullscreen
 set guifont=Monaco:h14
+set fullscreen
 set textwidth=1000
 
 " Disable scroll bars

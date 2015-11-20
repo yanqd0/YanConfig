@@ -112,6 +112,7 @@ Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1   "关闭折叠
 
 Plugin 'MikeCoder/markdown-preview.vim'
+map <leader>m :MarkdownPreviewWithCustomCodeStyleCodeStyle GitHub monokai_sublime<CR>
 
 " for esay input
 "Plugin 'jiangmiao/auto-pairs'

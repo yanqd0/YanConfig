@@ -5,11 +5,9 @@
 " conditions; see the LISENSE in the root of this project.
 
 set nocompatible               " be iMproved
+let mapleader=","
 
 source ~/.vim/plugins.vimrc
-
-" My configurations
-let mapleader=","
 
 " colors
 syntax on           "语法高亮
@@ -79,11 +77,13 @@ if has("autocmd")   "如果上次退出时光标不在第一行
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif               "则将光标定位在退出时所在行
 
-"一些map
+" Maps
 nnoremap <leader>lp :let @+=@"<CR>
 nnoremap <leader>cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
 nnoremap <Leader>rc :so ~/.vim/vimrc<CR>
-nnoremap <Leader>oc :tabnew ~/.vim/vimrc<CR>
+nnoremap <Leader>oc :edit ~/.vim/vimrc<CR>
+
+" Python
 map <F5> :w!<CR>:execute "!python -u %"<CR>
 map! <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>
 
@@ -99,7 +99,7 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
-"cscope的配置
+" cscope
 set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
 nnoremap <leader>sa :cs add ~/.vim/tags/cscope.out<CR>
 "查找C语言符号 v
@@ -118,8 +118,3 @@ nnoremap <leader>sf :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nnoremap <leader>si :cs find i <C-R>=expand("<cfile>")<cr><cr>
 "查找本函数调用的函数 v
 nnoremap <leader>sd :cs find d <C-R>=expand("<cword>")<cr><cr>
-
-"conque_term, <F3>为进入bash快捷键
-"let g:ConqueTerm_ExecFileKey = '<F5>'
-"nnoremap <silent> <F3> :ConqueTerm bash<CR>
-
