@@ -17,11 +17,12 @@ noremap <silent> x <PageUp>
 " Toggle javascript enable or not
 noremap ,js :set! javascript.enabled!<CR>:set! javascript.enabled<CR>
 
+autocmd Fullscreen .* :set gui=none
+
 highlight Hint::after content: attr(number); font-size:13pt
 highlight Normal color: black; background: white; font-size:14pt
 
 set editor='/usr/local/bin/mvim -g -f'
-autocmd Fullscreen .* :set gui=none
 set hintchars=abcdefghijklmnopqrstuvwxyz
 set nextpattern+=s*下一页|下一张|next|下一篇|下一頁|后一页|下页|后页s*
 set previouspattern+=s*上一页|上一张|prev|上一篇|上一頁|上页|前一页|前页s*
