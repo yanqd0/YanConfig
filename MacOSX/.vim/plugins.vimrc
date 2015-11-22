@@ -85,6 +85,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" `pip install --user flake8` should be executed, for Python
 
 " for move faster
 Plugin 'Lokaltog/vim-easymotion'
