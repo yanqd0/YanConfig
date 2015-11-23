@@ -98,6 +98,13 @@ Plugin 'bling/vim-airline'
 
 " for Git
 Plugin 'airblade/vim-gitgutter'
+nnoremap <silent> <leader>gg <ESC>:GitGutterToggle<CR>:GitGutterLineHighlightsToggle<CR>
+let g:gitgutter_enabled = 1
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_escape_grep = 1
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
 Plugin 'tpope/vim-fugitive'
 "Plugin 'github/git-lfs'
 
