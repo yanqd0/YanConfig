@@ -58,6 +58,18 @@ Plugin 'tomasr/molokai', {'rtp': '.'}
 " for markdown
 "Plugin 'plasticboy/vim-markdown'
 Plugin 'godlygeek/tabular'
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>table_auto_align()<CR>a
+function! s:table_auto_align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'junegunn/goyo.vim'
 "Plugin 'MikeCoder/markdown-preview.vim'
@@ -122,7 +134,7 @@ set noswapfile      "禁止生成临时文件
 
 set textwidth=900   "编辑时自动换行上限
 set wrap
-set formatoptions+=tcroqwabB
+"set formatoptions+=tcroqwabB
 filetype plugin indent on     "打开文件类型检测，允许加载文件类型插件，不同文件类型不同缩进方式
 "set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,latin1    "设置文件默认解码方式
 set fileencodings=utf8
