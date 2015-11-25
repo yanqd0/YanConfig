@@ -88,7 +88,11 @@ let g:syntastic_check_on_wq = 0
 " `pip install --user flake8` should be executed, for Python
 
 " for move faster
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'yanqd0/vim-easymotion'
+map <Space> <Plug>(easymotion-s2)
+"let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+"map <Leader>j <Plug>(easymotion-j)
+"map <Leader>k <Plug>(easymotion-k)
 
 " for cmd line
 "Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
