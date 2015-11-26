@@ -49,6 +49,8 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'kkoenig/wimproved.vim'
+map <silent> <F11> :WToggleFullscreen<CR>
+map! <silent> <F11> <Esc>WToggleFullscreen<CR>a
 
 " colors
 Plugin 'altercation/solarized', {'rtp': 'vim-colors-solarized'}
@@ -271,24 +273,24 @@ sign define MyBookmark linehl=BookmarkCol
 nmap to :let @+=@"<CR>
 nmap cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
 nnoremap <silent> <F12> :set tag=~/.vim/tags/tags<CR>
-map <silent> <F11> :call GvimToggleFullScreen()<CR>
-map! <silent> <F11> <Esc>:call GvimToggleFullScreen()<CR>a
 
-" functions
-function! GvimToggleFullScreen()
-    if &guioptions =~#'m'
-        set guioptions-=T
-        set guioptions-=m
-        set guioptions-=r
-        set guioptions-=L
-    else
-        set guioptions+=T
-        set guioptions+=m
-        set guioptions+=r
-        set guioptions+=L
-    endif
-    call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
-endfun
+" Deprecated
+" map <silent> <F11> :call GvimToggleFullScreen()<CR>
+" map! <silent> <F11> <Esc>:call GvimToggleFullScreen()<CR>a
+" function! GvimToggleFullScreen()
+"     if &guioptions =~#'m'
+"         set guioptions-=T
+"         set guioptions-=m
+"         set guioptions-=r
+"         set guioptions-=L
+"     else
+"         set guioptions+=T
+"         set guioptions+=m
+"         set guioptions+=r
+"         set guioptions+=L
+"     endif
+"     call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
+" endfun
 
 " some personal high light schemes
 " mg
