@@ -10,8 +10,10 @@ noremap <silent> J 10j
 noremap <silent> K 10k
 noremap <silent> h <C-p>
 noremap <silent> l <C-n>
-noremap <silent> <C-h> 10h
-noremap <silent> <C-l> 10l
+noremap <silent> zh 10h
+noremap <silent> zl 10l
+noremap <silent> zH 50h
+noremap <silent> zL 50l
 noremap <silent> v <PageDown>
 noremap <silent> x <PageUp>
 " Toggle javascript enable or not
