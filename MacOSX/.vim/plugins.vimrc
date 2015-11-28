@@ -75,8 +75,6 @@ let NERDTreeShowBookmarks=1     "显示书签
 let NERDTreeDirArrows=1         "目录箭头，1为显示箭头，0为传统+-|
 "let NERDTreeWinPos=1            "窗口显示在右侧
 
-Plugin 'scrooloose/nerdcommenter'
-
 " for syntastic checking
 Plugin 'scrooloose/syntastic'
 nnoremap <silent> <F3> :SyntasticCheck<CR>
@@ -89,6 +87,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " `pip install --user flake8` should be executed, for Python
+
+" for comment
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-commentary'
 
 " for move faster
 Plugin 'yanqd0/vim-easymotion'
@@ -112,6 +114,7 @@ let g:gitgutter_escape_grep = 1
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
+
 Plugin 'tpope/vim-fugitive'
 "Plugin 'github/git-lfs'
 
@@ -133,6 +136,7 @@ map <leader>m :MarkdownPreviewWithCustomCodeStyleCodeStyle GitHub monokai_sublim
 "Plugin 'jiangmiao/auto-pairs'
 "Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 " for cvs
 Plugin 'chrisbra/csv.vim'
@@ -141,8 +145,9 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'SirVer/ultisnips'
 
 " Python
-"Plugin 'klen/python-mode'
-"Plugin 'pythoncomplete'
+" Plugin 'klen/python-mode' " Deprecated by YouCompleteMe
+" Plugin 'pythoncomplete' " Deprecated by YouCompleteMe
+" Plugin 'nvie/vim-flake8' " Not necessary if syntastic is on.
 
 " Vimperator
 Plugin 'superbrothers/vim-vimperator'
