@@ -68,17 +68,13 @@ map <Space> <Plug>(easymotion-s2)
 " map <Leader>j <Plug>(easymotion-j)
 " map <Leader>k <Plug>(easymotion-k)
 
+Plugin 'kshenoy/vim-signature'
+
 " } move
 
 " } input end
 
 " window begin {
-" fullscreen {
-Plugin 'kkoenig/wimproved.vim'
-map <silent> <F11> :WToggleFullscreen<CR>
-map! <silent> <F11> <Esc>WToggleFullscreen<CR>a
-" }
-
 " status line {
 Plugin 'bling/vim-airline'
 

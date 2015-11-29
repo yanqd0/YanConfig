@@ -152,5 +152,7 @@ Plugin 'SirVer/ultisnips'
 " Vimperator
 Plugin 'superbrothers/vim-vimperator'
 
+Plugin 'kshenoy/vim-signature'
+
 call vundle#end()
 filetype plugin indent on           " Vundle required!
