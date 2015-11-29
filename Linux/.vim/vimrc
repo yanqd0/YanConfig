@@ -5,71 +5,35 @@
 " conditions; see the LISENSE in the root of this project.
 
 set nocompatible               " be iMproved
+let mapleader=","
+
+if filereadable(expand("~/.vim/plugins.vimrc"))
+    source ~/.vim/plugins.vimrc
+endif
+
+" colors begin {
 set t_Co=256
-filetype off                   " required!
+syntax on           "语法高亮
+set background=dark "设置背景色
+colorscheme molokai
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+" easymotion
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade Comment
+hi link EasyMotionTarget2First Constant
+hi link EasyMotionTarget2Second Conditional
 
-" let Vundle manage Vundle
-" required!
-Plugin 'VundleVim/Vundle.vim'       " let Vundle manage Vundle
-"Plugin 'gmarik/vundle'
+" vim-indent-guides
+let g:indent_guides_auto_colors = 0
+highlight IndentGuidesOdd  ctermbg=grey
+highlight IndentGuidesEven ctermbg=darkgrey
 
-filetype plugin indent on     " required!
-"
-" Brief help  -- 此处后面都是vundle的使用命令
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
-" Plugins
-
-" on vim-scripts
-Plugin 'taglist.vim'
-Plugin 'TaskList.vim'
-Plugin 'Gundo'
-
-" on github
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdcommenter'
-"Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'tpope/vim-surround'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-let g:indent_guides_indent_levels = 10
-
-" colors
-Plugin 'altercation/solarized', {'rtp': 'altercation/solarized/vim-colors-solarized/'}
-Plugin 'tomasr/molokai'
-Plugin 'lsdr/monokai'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-
-" for markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-
-" a special one
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'ervandew/eclim'
-call vundle#end()
+" some personal high light schemes
+hi YanError ctermbg=green ctermfg=black guibg=red guifg=black
+match YanError /\t\|\r\|\s\s*\n/
+" } colors end
 
 " My configurations
-let mapleader=","
 set number          "显示行号
 set hlsearch        "高亮搜索
 set incsearch       "在键入目标字符时就开始搜索
@@ -108,7 +72,7 @@ set ruler           "打开光标行列位置显示功能
 set cursorline      "鼠标行高亮
 "set cursorcolumn     "鼠标列高亮，与函数列表有冲突
 "set cmdheight=2    "设置命令行的高度
-"set spell          "设置拼写查错
+set spell           "设置拼写查错
 set laststatus=2    "显示状态栏（默认值为1，无法显示状态栏）
 set nocp            "去掉有关vi一致性模式，避免以前版本的一些bug和局限
 set nobackup        "缺省不产生备份文件
@@ -116,7 +80,7 @@ set noswapfile      "禁止生成临时文件
 
 set textwidth=100
 set cc=100
-set formatoptions+=tcroqwabB
+set formatoptions+=tcroqwbmBj
 filetype plugin indent on     "打开文件类型检测，允许加载文件类型插件，不同文件类型不同缩进方式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,latin1    "设置文件默认解码方式
 "set fileformats=unix,dos    "自动识别UNIX和MS-DOS的格式
@@ -125,6 +89,39 @@ set fileformats=unix
 if has("autocmd")   "如果上次退出时光标不在第一行
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif               "则将光标定位在退出时所在行
+
+" autocmd
+if has("autocmd")
+    " Java
+    autocmd filetype java set textwidth=100
+    autocmd filetype java set colorcolumn=100
+    autocmd filetype java map <F5> :w!<CR>:execute "!javac %; java %:t:r"<CR>
+    autocmd filetype java map! <F5> <ESC>:w!<CR>:execute "!javac %; java %:t:r"<CR>
+
+    " Python
+    autocmd filetype python set textwidth=80
+    autocmd filetype python set colorcolumn=80
+    autocmd filetype python map <F5> :w!<CR>:execute "!python -u %"<CR>
+    autocmd filetype python map! <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>
+endif
+
+" Maps
+nnoremap <leader>lp :let @+=@"<CR>
+nnoremap <leader>cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
+nnoremap <Leader>rc :so ~/.vim/vimrc<CR>
+nnoremap <Leader>oc :edit ~/.vim/vimrc<CR>
+
+" Windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
 "cscope的配置
 set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
@@ -145,127 +142,3 @@ nmap <leader>sf :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nmap <leader>si :cs find i <C-R>=expand("<cfile>")<cr><cr>
 "查找本函数调用的函数 v
 nmap <leader>sd :cs find d <C-R>=expand("<cword>")<cr><cr>
-
-"taglist, <F8>为显示/关闭快捷键
-nnoremap <silent> <F8> :TlistToggle<CR>
-let Tlist_Use_Right_Window=1    "Tlist显示在右侧
-let Tlist_Exit_OnlyWindow=1     "如果taglist是最后一个窗口，则退出vim
-let Tlist_GainFocus_On_ToggleOpen=1     "TlistToggle打开后，焦点自动转到taglist窗口中
-let Tlist_Close_On_Select=1     "选择后，自动关闭taglist窗口
-let Tlist_Use_SingleClick=1     "鼠标单击，即可跳转
-
-"TaskList
-nnoremap <leader>td :TaskList<CR>
-
-"NERDTree, <F6>为显示/关闭快捷键
-nnoremap <silent> <F6> :NERDTreeToggle<CR>
-nnoremap <C-F6> :NERDTreeFind<CR>
-let NERDTreeChDirMode=2         "选中root即设置为当前目录
-let NERDTreeQuitOnOpen=1        "打开文件时关闭树
-let NERDTreeShowBookmarks=1     "显示书签
-"let NERDTreeMinimalUI=1         "不显示帮助面板
-let NERDTreeDirArrows=1         "目录箭头，1为显示箭头，0为传统+-|
-"let NERDTreeWinPos=1            "窗口显示在右侧
-
-"conque_term, <F3>为进入bash快捷键
-"let g:ConqueTerm_ExecFileKey = '<F5>'
-"nnoremap <silent> <F3> :ConqueTerm bash<CR>
-
-" colors
-" solarized
-"set background=dark
-"let g:solarized_menu=0
-"colorscheme solarized
-"syntax enable
-
-
-" molokai
-let g:molokai_original = 0
-let g:rehash256 = 1
-colorscheme molokai
-
-" TagBar
-nmap <silent> <F7> :TagbarToggle<CR>
-
-" Gundo
-nnoremap <Leader>u :GundoToggle<CR>
-
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_max_files = 30000
-let g:ctrlp_max_depth = 8
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll)$',
-    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-    \ }
-let g:ctrlp_mruf_max = 250
-let g:ctrlp_lazy_update = 0
-let g:ctrlp_show_hidden = 1
-
-" syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
-"nnoremap <F4> :SyntasticToggleMode<CR>
-"nnoremap <F3> :SyntasticCheck<CR>
-
-" easymotion
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade Comment
-hi link EasyMotionTarget2First Constant
-hi link EasyMotionTarget2Second Conditional
-
-" vim-indent-guides
-let g:indent_guides_auto_colors = 0
-highlight IndentGuidesOdd  ctermbg=grey
-highlight IndentGuidesEven ctermbg=darkgrey
-
-" powerline
-set laststatus=2
-let g:Powerline_symbols="unicode"
-
-" vim-gitgutter
-nnoremap <silent> <leader>gg <ESC>:GitGutterToggle<CR>:GitGutterLineHighlightsToggle<CR>
-let g:gitgutter_enabled = 1
-let g:gitgutter_highlight_lines = 1
-let g:gitgutter_escape_grep = 1
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-"highlight GitGutterAddLine ctermbg=white
-"highlight GitGutterChangeLine ctermbg=yellow
-"highlight GitGutterDeleteLine ctermbg=blue
-
-" vim-markdown
-let g:vim_markdown_folding_disabled=1
-
-" Eclim
-nnoremap <silent> <leader>ejc :JavaCorrect<CR>
-nnoremap <silent> <leader>eru :RefactorUndo<CR>
-nnoremap <silent> <leader>err :RefactorRedo<CR>
-let g:EclimBuffersDefaultAction="edit"
-
-" define a highlight colour group for bookmarks
-hi default BookmarkCol ctermfg=blue ctermbg=lightblue cterm=bold guifg=DarkBlue guibg=#d0d0ff gui=bold
-" define a bookmark / sign: just highlight the line
-sign define MyBookmark linehl=BookmarkCol
-
-"一些map
-nmap to :let @+=@"<CR>
-nmap cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
-nnoremap <silent> <F12> :set tag=~/.vim/tags/tags<CR>
-nnoremap <silent> <leader>bf <ESC>:BuffersToggle<CR>
-nnoremap <leader>rc :so ~/.vim/vimrc<CR>
-nnoremap <leader>oc :tabnew ~/.vim/vimrc<CR>
-nnoremap <leader>og :tabnew ~/.vim/gvimrc<CR>
-nnoremap <silent> <leader>ide <ESC>:NERDTreeToggle<CR>:TagbarToggle<CR>
-
-
-" some personal high light schemes
-hi YanError ctermbg=green ctermfg=black guibg=red guifg=black
-match YanError /\t\|\r\|\s\s*\n/
