@@ -68,7 +68,7 @@ set splitright                  " Puts new vsplit windows to the right of the cu
 set splitbelow                  " Puts new split windows to the bottom of the current
 
 set wrap
-"set formatoptions+=tcroqwabB
+set formatoptions+=tcroqwbmBj
 filetype plugin indent on     "打开文件类型检测，允许加载文件类型插件，不同文件类型不同缩进方式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,latin1    "设置文件默认解码方式
 set fileformats=unix,dos    "自动识别UNIX和MS-DOS的格式

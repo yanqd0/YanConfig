@@ -16,6 +16,12 @@ Plugin 'zenorocha/dracula-theme', {'rtp': 'vim'}
 Plugin 'tomasr/molokai', {'rtp': '.'}
 let g:molokai_original = 1
 let g:rehash256 = 1
+
+Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_indent_levels = 10
 " } syntax color end
 
 " input begin {
