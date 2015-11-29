@@ -7,7 +7,9 @@
 set nocompatible               " be iMproved
 let mapleader=","
 
-source ~/.vim/plugins.vimrc
+if filereadable(expand("~/.vim/plugins.vimrc"))
+    source ~/.vim/plugins.vimrc
+endif
 
 " colors
 syntax on           "语法高亮
@@ -66,26 +68,39 @@ set cursorline      "鼠标行高亮
 set laststatus=2    "显示状态栏（默认值为1，无法显示状态栏）
 set nobackup        "缺省不产生备份文件
 set noswapfile      "禁止生成临时文件
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
 
-set textwidth=100
 set formatoptions+=tcroqlwabB
 filetype plugin indent on     "打开文件类型检测，允许加载文件类型插件，不同文件类型不同缩进方式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,latin1    "设置文件默认解码方式
 set fileformats=unix,dos    "自动识别UNIX和MS-DOS的格式
 
+
 if has("autocmd")   "如果上次退出时光标不在第一行
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif               "则将光标定位在退出时所在行
+
+" autocmd
+if has("autocmd")
+    " Java
+    autocmd filetype java set textwidth=100
+    autocmd filetype java set colorcolumn=100
+    autocmd filetype java map <F5> :w!<CR>:execute "!javac %; java %:t:r"<CR>
+    autocmd filetype java map! <F5> <ESC>:w!<CR>:execute "!javac %; java %:t:r"<CR>
+
+    " Python
+    autocmd filetype python set textwidth=80
+    autocmd filetype python set colorcolumn=80
+    autocmd filetype python map <F5> :w!<CR>:execute "!python -u %"<CR>
+    autocmd filetype python map! <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>
+endif
 
 " Maps
 nnoremap <leader>lp :let @+=@"<CR>
 nnoremap <leader>cd :lcd %:p:h<CR>      "切换当前文件目录为当前目录
 nnoremap <Leader>rc :so ~/.vim/vimrc<CR>
 nnoremap <Leader>oc :edit ~/.vim/vimrc<CR>
-
-" Python
-map <F5> :w!<CR>:execute "!python -u %"<CR>
-map! <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>
 
 " Windows
 map <C-j> <C-W>j

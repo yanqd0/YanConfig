@@ -5,9 +5,9 @@
 " conditions; see the LISENSE in the root of this project.
 
 set guifont=Monaco:h14
-set fullscreen
-set textwidth=1000
 
 " Disable scroll bars
 set guioptions-=r
 set guioptions-=L
+
+set fullscreen
