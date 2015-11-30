@@ -5,8 +5,8 @@
 " conditions; see the LISENSE in the root of this project.
 
 filetype off                        " Vundle required!
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-call vundle#begin('$VIM/vimfiles/bundle/')
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'       " let Vundle manage Vundle
 
 " syntax color begin {
@@ -14,7 +14,7 @@ Plugin 'altercation/solarized', {'rtp': 'vim-colors-solarized'}
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim'}
 Plugin 'lsdr/monokai'
 
-Plugin 'tomasr/molokai', {'rtp': '.'}
+Plugin 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -83,7 +83,7 @@ let g:Powerline_symbols="unicode"
 " } status line
 
 " files {
-" Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <C-F6> :NERDTreeFind<CR>
 let NERDTreeChDirMode=2         "选中root即设置为当前目录
@@ -91,7 +91,7 @@ let NERDTreeQuitOnOpen=1        "打开文件时关闭树
 let NERDTreeShowBookmarks=1     "显示书签
 "let NERDTreeMinimalUI=1         "不显示帮助面板
 let NERDTreeDirArrows=1         "目录箭头，1为显示箭头，0为传统+-|
-"let NERDTreeWinPos=1            "窗口显示在右侧
+let NERDTreeWinPos=1            "窗口显示在右侧
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
@@ -107,6 +107,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_mruf_max = 250
 let g:ctrlp_lazy_update = 0
 let g:ctrlp_show_hidden = 1
+
 " } files
 
 " tags {
@@ -146,10 +147,10 @@ Plugin 'tpope/vim-fugitive'
 " } Git end
 
 " markdown begin {
-" Plugin 'plasticboy/vim-markdown'
-" let g:vim_markdown_folding_disabled=1
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
 
-" Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
 " augroup markdown
 "     au!
 "     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
@@ -184,6 +185,10 @@ Bundle 'pythoncomplete'
 " csv begin {
 Plugin 'chrisbra/csv.vim'
 " } csv end
+
+" Vimperator begin {
+Plugin 'superbrothers/vim-vimperator'
+" }
 
 call vundle#end()
 filetype plugin indent on     " required!

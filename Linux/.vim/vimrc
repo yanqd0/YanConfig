@@ -17,16 +17,18 @@ syntax on           "语法高亮
 set background=dark "设置背景色
 colorscheme molokai
 
+" vim-indent-guides
+if !has('gui')
+    let g:indent_guides_auto_colors = 0
+    highlight IndentGuidesOdd  ctermbg=grey
+    highlight IndentGuidesEven ctermbg=darkgrey
+endif
+
 " easymotion
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade Comment
 hi link EasyMotionTarget2First Constant
 hi link EasyMotionTarget2Second Conditional
-
-" vim-indent-guides
-let g:indent_guides_auto_colors = 0
-highlight IndentGuidesOdd  ctermbg=grey
-highlight IndentGuidesEven ctermbg=darkgrey
 
 " some personal high light schemes
 hi YanError ctermbg=green ctermfg=black guibg=red guifg=black
@@ -72,14 +74,13 @@ set ruler           "打开光标行列位置显示功能
 set cursorline      "鼠标行高亮
 "set cursorcolumn     "鼠标列高亮，与函数列表有冲突
 "set cmdheight=2    "设置命令行的高度
-set spell           "设置拼写查错
+"set spell           "设置拼写查错
 set laststatus=2    "显示状态栏（默认值为1，无法显示状态栏）
-set nocp            "去掉有关vi一致性模式，避免以前版本的一些bug和局限
 set nobackup        "缺省不产生备份文件
 set noswapfile      "禁止生成临时文件
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
 
-set textwidth=100
-set cc=100
 set formatoptions+=tcroqwbmBj
 filetype plugin indent on     "打开文件类型检测，允许加载文件类型插件，不同文件类型不同缩进方式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,latin1    "设置文件默认解码方式
