@@ -11,3 +11,5 @@ set guioptions-=r
 set guioptions-=L
 
 set fullscreen
+map <silent> <F11> :set fullscreen!<CR>
+map! <silent> <F11> <ESC>:set fullscreen!<CR>a
