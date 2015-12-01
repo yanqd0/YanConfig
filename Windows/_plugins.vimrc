@@ -169,6 +169,10 @@ Bundle 'klen/python-mode'
 Bundle 'pythoncomplete'
 " } Python end
 
+" Textile begin {
+Plugin 'timcharper/textile.vim'
+" } Textile end
+
 " csv begin {
 Plugin 'chrisbra/csv.vim'
 " } csv end
