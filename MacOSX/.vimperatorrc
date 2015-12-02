@@ -17,7 +17,7 @@ noremap <silent> zL 50l
 noremap <silent> v <PageDown>
 noremap <silent> x <PageUp>
 " Toggle javascript enable or not
-noremap ,js :set! javascript.enabled!<CR>:set! javascript.enabled<CR>
+noremap ,js :setlocal! javascript.enabled!<CR>:setlocal! javascript.enabled?<CR>
 
 autocmd Fullscreen .* :set gui=none
 
