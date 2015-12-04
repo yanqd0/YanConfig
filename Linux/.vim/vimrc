@@ -143,3 +143,7 @@ nmap <leader>sf :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nmap <leader>si :cs find i <C-R>=expand("<cfile>")<cr><cr>
 "查找本函数调用的函数 v
 nmap <leader>sd :cs find d <C-R>=expand("<cword>")<cr><cr>
+
+if filereadable(expand("~/.vim/laboratory.vimrc"))
+    source ~/.vim/laboratory.vimrc
+endif
