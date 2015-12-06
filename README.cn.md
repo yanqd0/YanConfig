@@ -2,7 +2,7 @@
 
 这个repo是我个人存放MacOSX、Linux、Windows三大平台配置文件的地方。目前主要包括：
 
-- [Vim](#Vim)
+- [Vim](#vim)
 - Vimperator
 - Bash
 
@@ -79,9 +79,12 @@
 
 ### useful fuctions
 
-列出部分常用命令（括号内的字符可省略）。
+列出部分常用而少见的命令（括号内的字符可省略）。
 
-| fuction        | description           |
-| :------        | :----------           |
+| fuction          | description           |
+| :------          | :----------           |
 | `:colo(rscheme)` | 切换配色方案          |
-| `:ret(ab)(!)`  | 把所有<TAB>替换成空格 |
+| `:ret(ab)[!]`    | 把所有<TAB>替换成空格 |
+| `:reg(isters)`   | 显示寄存器            |
+| `:buffers[!]`    | 显示buffer区文件      |
+| `:ls[!]`         | 同上                  |
