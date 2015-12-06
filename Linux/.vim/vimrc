@@ -4,8 +4,8 @@
 " This is free software, and you are welcome to redistribute it under certain
 " conditions; see the LISENSE in the root of this project.
 
-set nocompatible               " be iMproved
-let mapleader=","
+set nocompatible                    " Be iMproved, not Vi compatible
+let mapleader=","                   " Use ',' instead of default '\'
 
 if filereadable(expand("~/.vim/plugins.vimrc"))
     source ~/.vim/plugins.vimrc
