@@ -199,9 +199,14 @@ endif
 " }
 
 " Maps {
-nnoremap <leader>lp :let @*=@"<CR>
+
+" Paste to system clipboard
+nnoremap <leader>pc :let @*=@"<CR>
+" Set current window directory same as current file
 nnoremap <leader>cd :lcd %:p:h<CR>
-nnoremap <Leader>rc :so ~/.vim/vimrc<CR>
+" Reload vimrc
+nnoremap <Leader>rc :source ~/.vim/vimrc<CR>
+" Open vimrc
 nnoremap <Leader>oc :edit ~/.vim/vimrc<CR>
 
 if has("windows")                   " Windows
