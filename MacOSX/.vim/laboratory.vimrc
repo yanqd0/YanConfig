@@ -4,4 +4,7 @@
 " This is free software, and you are welcome to redistribute it under certain
 " conditions; see the LISENSE in the root of this project.
 
-match WarningMsg /\k*\%#\k*/          " highlight current cursor word
+match WarningMsg /\k*\%#\k*/        " highlight current cursor word
+
+highlight MyBlank ctermbg=red ctermfg=black guibg=red guifg=black
+match MyBlank /\t\|\r\|\s\s*\n/
