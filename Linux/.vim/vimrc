@@ -7,8 +7,10 @@
 set nocompatible                    " Be iMproved, not Vi compatible
 let mapleader=","                   " Use ',' instead of default '\'
 
-if filereadable(expand("~/.vim/plugins.vimrc"))
-    source ~/.vim/plugins.vimrc
+if isdirectory(expand("~/.vim/bundle/Vundle.vim"))
+    if filereadable(expand("~/.vim/plugins.vimrc"))
+        source ~/.vim/plugins.vimrc
+    endif
 endif
 
 
@@ -104,6 +106,7 @@ set listchars=tab:>-,trail:$        " Show <Tab> as >---
 set wrap                            " Wrap lines longer than window width
 if has("linebreak")
     set linebreak                   " Wrap long lines only on display
+    set breakat-=@                  " Adjust line break characters
     set showbreak=>\                " Show wrap breaks as...
     set breakindent                 " Wrap lines are visually indented
     set breakindentopt=min:40       " Minimum text width after 'breakindent'

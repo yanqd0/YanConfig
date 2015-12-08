@@ -51,6 +51,7 @@
 | listchars (lcs)      | see :h 'lcs'       | 设置空字符的显示方式               |
 | wrap                 | --                 | 屏幕宽度不够时自动换行显示         |
 | linebreak (lbr)      | --                 | wrap时按词分割而不是按最大宽度     |
+| breakat              | " ^I!*-+;:,./?"    | 选择会导致可以分词wrap的特殊字符   |
 | showbreak (sbr)      | >\ (default "")    | 显示特殊字符表示wrap换行           |
 | breakindent (bri)    | --                 | wrap时自动缩进                     |
 | breakindentopt       | min:40,shift:4,sbr | 最小显示、缩进宽度，sbr显示在行首  |
