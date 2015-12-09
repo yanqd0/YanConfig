@@ -10,16 +10,16 @@ set mouse=
 " for markdown
 set textwidth=1000
 
-function! LinuxToggleFullScreen()
-    if &guioptions =~#'T'
-        set guioptions-=T
-        set guioptions-=m
-        set guioptions-=r
-        set guioptions-=L
-    endif
-    call system("wmctrl -ir" . v:windowid . " -b toggle,fullscreen")
-endfun
+if &guioptions =~#'T'
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=r
+    set guioptions-=L
+endif
 
-map <silent> <F11> <ESC>:call LinuxToggleFullScreen()<CR>
-map! <silent> <F11> <ESC>:call LinuxToggleFullScreen()<CR>
-map! <silent> <S-Insert> <C-r>+
+" function! LinuxToggleFullScreen()
+"    call system("wmctrl -ir" . v:windowid . " -b toggle,fullscreen")
+" endfun
+" map <silent> <F11> <ESC>:call LinuxToggleFullScreen()<CR>
+" map! <silent> <F11> <ESC>:call LinuxToggleFullScreen()<CR>
+" map! <silent> <S-Insert> <C-r>+
