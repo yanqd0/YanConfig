@@ -24,6 +24,10 @@ Plugin 'TaskList.vim'
 
 " for completion
 Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
+let g:SuperTabMappingForward = '<Tab>'
+let g:SuperTabMappingBackward = '<S-Tab>'
+
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -33,7 +37,6 @@ let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_register_as_syntastic_checker = 1
-let g:SuperTabDefaultCompletionType = '<C-TAB>'
 
 " for syntax color
 "Plugin 'altercation/solarized'
