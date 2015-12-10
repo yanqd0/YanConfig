@@ -103,6 +103,7 @@ Plugin 'tpope/vim-commentary'
 
 " for move faster
 Plugin 'yanqd0/vim-easymotion'
+let g:EasyMotion_smartcase = 1
 map <Space> <Plug>(easymotion-s2)
 "let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 "map <Leader>j <Plug>(easymotion-j)
