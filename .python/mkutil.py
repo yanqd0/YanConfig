@@ -126,6 +126,9 @@ def get_des_by_bak(bak):
 def copy_src_to_des(src_paths):
     for src in src_paths:
         des = get_des_by_src(src)
+        des_dir = os.path.dirname(des)
+        if not os.path.isdir(des_dir):
+            os.makedirs(des_dir)
         print src, '=>', des
         shutil.copy2(src, des)
 
@@ -165,6 +168,10 @@ def remove_des_by_src(src_paths):
 def link_src_to_des(src_paths):
     for src in src_paths:
         des = get_des_by_src(src)
+        des_dir = os.path.dirname(des)
+        if not os.path.isdir(des_dir):
+            os.makedirs(des_dir)
+
         abs_src = os.path.abspath(src)
         cmd = 'ln -s ' + abs_src + ' ' + des
         print cmd
