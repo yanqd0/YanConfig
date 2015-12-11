@@ -6,12 +6,19 @@
 
 # export {
 # ls
-export CLICOLOR=1   #ls color
-export CLICOLOR_FORCE=1
-export LSCOLORS=gxfxaxdxcxegedabagacad  #ls color specific
+export CLICOLOR=1                   # Colorize `ls`
+export CLICOLOR_FORCE=1             # Always
+export LSCOLORS=gxfxaxdxcxegedabagacad
 # grep
 export GREP_OPTIONS='--color=always'
 export GREP_COLOR='5;40'
+# }
+
+# shopt {
+shopt -s checkwinsize               # Check the window size and update if necessary,
+shopt -s histappend                 # Append to the history file
+shopt -s cdspell                    # Auto amend directory error
+shopt -s extglob                    # Several extended pattern matching operators are recognized
 # }
 
 # sub configs {

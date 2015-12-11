@@ -6,9 +6,10 @@
 
 # ls {
 alias ll='ls -AhlF'                 # List files and directories with human readable detailed infomation
+alias la='ls -A'                    # Show All files
 alias l.='ls -d .*'                 # Show hidden files only
-alias lsf='ls -hl | grep ^d'        # Show files only
-alias lsd='ls -hl | grep -v ^d'     # Show directories only
+alias lsf='ls -hAl | grep ^d'       # Show files only
+alias lsd='ls -hAl | grep -v ^d'    # Show directories only
 # Recursive directory listing
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
 # Recursive directory listing including hidden files
