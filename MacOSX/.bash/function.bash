@@ -5,11 +5,11 @@
 # conditions; see the LISENSE in the root of this project.
 
 # mkdir and cd into it
-function mcd() {
-mkdir -p "$1" && cd "$1";
+mcd () {
+    mkdir -p "$1" && cd "$1";
 }
 
-# extract files
+# extract varioua condensed files
 myextract () {
     if [ -f $1 ] ; then
         case $1 in
