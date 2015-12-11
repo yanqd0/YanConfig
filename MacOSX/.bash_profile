@@ -4,6 +4,11 @@
 # This is free software, and you are welcome to redistribute it under certain
 # conditions; see the LISENSE in the root of this project.
 
+# Personal config
+if [ -f ~/.bash/bashrc ]; then
+    . ~/.bash/bashrc
+fi
+
 # PATH
 PATH=$PATH:~/Library/Python/2.7/bin
 
@@ -11,21 +16,6 @@ PATH=$PATH:~/Library/Python/2.7/bin
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion;
 fi
-
-# Setting git completion
-source ~/.git-completion.bash
-
-# Persinal bash profile #
-# ls
-export CLICOLOR=1   #ls color
-export CLICOLOR_FORCE=1
-export LSCOLORS=gxfxaxdxcxegedabagacad  #ls color specific
-# grep
-export GREP_OPTIONS='--color=always'
-export GREP_COLOR='5;40'
-
-# alias
-source ~/.alias.bash
 
 # Setting Android SDK path
 PATH="~/Library/Android/sdk/platform-tools:${PATH}"
