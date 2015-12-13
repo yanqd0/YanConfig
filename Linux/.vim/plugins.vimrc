@@ -9,39 +9,144 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'       " let Vundle manage Vundle
 
-" syntax color begin {
+" Syntax color {{{
+
 Plugin 'altercation/solarized', {'rtp': 'vim-colors-solarized'}
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim'}
-Plugin 'lsdr/monokai'
+let g:solarized_menu=0
 
 Plugin 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
 
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim'}
+Plugin 'lsdr/monokai'
+
+" indent {{{
 Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_indent_levels = 10
-" } syntax color end
+let g:indent_guides_auto_colors = 1
+" }}}
 
-" input begin {
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-surround'
+" }}}
 
-" completion {
+" Input {{{
+
+" completion {{{
+
 Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = '<C-x><C-n>'
+let g:SuperTabMappingForward = '<Tab>'
+let g:SuperTabMappingBackward = '<S-Tab>'
 
-" Plugin 'Valloric/YouCompleteMe'
-" let g:ycm_add_preview_to_completeopt = 1
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_autoclose_preview_window_after_insertion = 0
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_key_invoke_completion = '<C-/>'
+let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_register_as_syntastic_checker = 1
 
 Plugin 'ervandew/eclim'
-nnoremap <silent> <leader>ejc :JavaCorrect<CR>
-nnoremap <silent> <leader>eru :RefactorUndo<CR>
-nnoremap <silent> <leader>err :RefactorRedo<CR>
+nnoremap <silent> <leader>jc :JavaCorrect<CR>
+nnoremap <silent> <leader>ru :RefactorUndo<CR>
+nnoremap <silent> <leader>rr :RefactorRedo<CR>
 
+" }}}
+
+" comment {{{
+
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-commentary'
+
+" }}}
+
+" move {{{
+
+Plugin 'yanqd0/vim-easymotion'
+let g:EasyMotion_smartcase = 1
+map <Space> <Plug>(easymotion-s2)
+" let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
+
+Plugin 'kshenoy/vim-signature'
+
+" }}}
+
+" pair {{{
+
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-surround'
+
+" }}}
+
+Plugin 'tpope/vim-repeat'
+Plugin 'SirVer/ultisnips'
+
+" }}}
+
+" tags {{{
+
+Plugin 'majutsushi/tagbar'
+nmap <silent> <F9> :TagbarToggle<CR>
+let g:tagbar_width = 40             " Width of the Tagbar window
+let g:tagbar_autofocus = 1          " Jump to Tagbar window on open
+let g:tagbar_show_linenumbers=2     " Show relative line numbers
+let g:tagbar_singleclick = 1        " Single-click on a tag jumps to it
+
+Plugin 'taglist.vim'
+nnoremap <silent> <F8> :TlistToggle<CR>
+" let Tlist_Auto_Open=1               " Open taglist when start-up
+" let Tlist_GainFocus_On_ToggleOpen=1 " Jump to taglist window on open
+" let Tlist_Close_On_Select=1         " Close the taglist window when selected
+let Tlist_Exit_OnlyWindow=1         " Close Vim if the taglist is the only window
+let Tlist_Enable_Fold_Column=1      " Show the fold indicator column
+let Tlist_File_Fold_Auto_Close=1    " Fold all other buffers
+let Tlist_Use_Right_Window=1        " Place the taglist window on the right side
+let Tlist_Use_SingleClick=1         " Single-click on a tag jumps to it
+
+" }}}
+
+" View {{{
+
+" files {{{
+
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_max_history = &history
+let g:ctrlp_max_files = 30000
+let g:ctrlp_max_depth = 8
+let g:ctrlp_mruf_max = 250
+let g:ctrlp_lazy_update = 0
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+            \ 'file': '\v\.(exe|so|dll)$',
+            \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+            \ }
+
+Plugin 'scrooloose/nerdtree'
+nnoremap <silent> <F6> :NERDTreeToggle<CR>
+nnoremap <C-F6> :NERDTreeFind<CR>
+" let loaded_nerd_tree=1              " Open NERD tree when start-up
+let NERDTreeChDirMode=2             " Set the root of NERD tree as current directory
+let NERDTreeQuitOnOpen=1            " Closes the tree window after opening a file
+let NERDTreeShowBookmarks=1         " The bookmarks table will be displayed
+let NERDTreeWinPos=1                " Show the window at the right
+let NERDTreeWinSize=32              " Window size when the NERD tree is opened
+let NERDTreeRespectWildIgnore=1     " the 'wildignore' setting is respected
+let NERDTreeMouseMode=2             " Double click file and single click directory
+let NERDTreeAutoDeleteBuffer=1      " Auto delete invalid buffers
+
+" }}}
+
+" syntastic checking {{{
 " Plugin 'scrooloose/syntastic'
 " nnoremap <silent> <F3> :SyntasticCheck<CR>
 " nnoremap <silent> <F4> :SyntasticToggleMode<CR>
@@ -52,86 +157,27 @@ nnoremap <silent> <leader>err :RefactorRedo<CR>
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
-" Note: `pip install --user flake8` should be executed, for Python
+" `pip install --user flake8` should be executed, for Python
+" }}}
 
-" } completion
+" status line {{{
 
-" comment {
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-commentary'
-" } comment
+" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
+" let g:Powerline_symbols="unicode"
 
-" move {
-Plugin 'yanqd0/vim-easymotion'
-map <Space> <Plug>(easymotion-s2)
-" let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
-
-Plugin 'kshenoy/vim-signature'
-
-" } move
-
-" } input end
-
-" window begin {
-" status line {
 Plugin 'bling/vim-airline'
 
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-let g:Powerline_symbols="unicode"
-" } status line
-
-" files {
-Plugin 'scrooloose/nerdtree'
-nnoremap <silent> <F6> :NERDTreeToggle<CR>
-nnoremap <C-F6> :NERDTreeFind<CR>
-let NERDTreeChDirMode=2         "选中root即设置为当前目录
-let NERDTreeQuitOnOpen=1        "打开文件时关闭树
-let NERDTreeShowBookmarks=1     "显示书签
-"let NERDTreeMinimalUI=1         "不显示帮助面板
-let NERDTreeDirArrows=1         "目录箭头，1为显示箭头，0为传统+-|
-let NERDTreeWinPos=1            "窗口显示在右侧
-
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_max_history = &history
-let g:ctrlp_max_files = 30000
-let g:ctrlp_max_depth = 8
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll)$',
-            \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-            \ }
-let g:ctrlp_mruf_max = 250
-let g:ctrlp_lazy_update = 0
-let g:ctrlp_show_hidden = 1
-
-" } files
-
-" tags {
-Plugin 'majutsushi/tagbar'
-nmap <silent> <F7> :TagbarToggle<CR>
-
-Plugin 'taglist.vim'
-nnoremap <silent> <F8> :TlistToggle<CR>
-let Tlist_Use_Right_Window=1    "Tlist显示在右侧
-let Tlist_Exit_OnlyWindow=1     "如果taglist是最后一个窗口，则退出vim
-let Tlist_GainFocus_On_ToggleOpen=1     "TlistToggle打开后，焦点自动转到taglist窗口中
-let Tlist_Close_On_Select=1     "选择后，自动关闭taglist窗口
-let Tlist_Use_SingleClick=1     "鼠标单击，即可跳转
-
-" } tags
+" }}}
 
 Plugin 'TaskList.vim'
 nnoremap <leader>td :TaskList<CR>
 
 Plugin 'sjl/gundo.vim'
-nnoremap <Leader>u :GundoToggle<CR>
-" } window end
+nnoremap <Leader>ud :GundoToggle<CR>
+" }}}
 
-" Git begin {
+" Git {{{
+
 Plugin 'airblade/vim-gitgutter'
 nnoremap <silent> <leader>gg <ESC>:GitGutterToggle<CR>:GitGutterLineHighlightsToggle<CR>
 let g:gitgutter_enabled = 1
@@ -144,51 +190,69 @@ Plugin 'tpope/vim-fugitive'
 
 " Plugin 'github/git-lfs'
 
-" } Git end
+" }}}
 
-" markdown begin {
+" Markdown {{{
+
+" syntax {{{
+
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 
 Plugin 'jtratner/vim-flavored-markdown'
-" augroup markdown
-"     au!
-"     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-" augroup END
-
-Plugin 'godlygeek/tabular'
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>table_auto_align()<CR>a
-function! s:table_auto_align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
-
-Plugin 'junegunn/goyo.vim'
+augroup markdown
+    autocmd!
+    autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 Plugin 'MikeCoder/markdown-preview.vim'
 map <leader>m :MarkdownPreviewWithCustomCodeStyleCodeStyle GitHub monokai_sublime<CR>
-" } markdown end
 
-" Python begin {
-Bundle 'klen/python-mode'
-" Bundle 'yssource/python.vim'
-" Bundle 'python_match.vim'
-Bundle 'pythoncomplete'
-" } Python end
+" }}}
 
-" csv begin {
-Plugin 'chrisbra/csv.vim'
-" } csv end
+" tabularize {{{
+Plugin 'godlygeek/tabular'
 
-" Vimperator begin {
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>table_auto_align()<CR>a
+
+function! s:table_auto_align()
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|'
+                \ && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
+endfunction
+" }}}
+
+Plugin 'junegunn/goyo.vim'
+
+" }}}
+
+" Python {{{
+
+Plugin 'klen/python-mode'           " Deprecated by YouCompleteMe
+Plugin 'pythoncomplete'             " Deprecated by YouCompleteMe
+
+" }}}
+
+" Vimperator {{{
+
 Plugin 'superbrothers/vim-vimperator'
-" }
+
+" }}}
+
+" cvs {{{
+
+Plugin 'chrisbra/csv.vim'
+
+" }}}
 
 call vundle#end()
 filetype plugin indent on     " required!
+
+" vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
+" vim: set textwidth=100 colorcolumn=100:

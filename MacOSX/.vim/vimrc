@@ -87,8 +87,8 @@ if has("extra_search")
     set hlsearch                    " Highlight search result
     set incsearch                   " Search when typing
 endif
-set ignorecase                      " The case of normal letters is ignored
-set smartcase                       " Override the 'ignorecase' option if the search pattern contains upper case characters
+set ignorecase                      " The case of normal letters is ignored when searching
+set smartcase                       " Override the 'ignorecase' if contains upper case characters
 if has("reltime")
     set redrawtime=500              " The time in milliseconds for redrawing the display
 endif
@@ -112,7 +112,9 @@ endif
 if has("cindent")
     set cindent                     " Do smart autoindenting according to C rules
 endif
-set backspace=indent,eol,start      " Allow backspacing over autoindent, line breaks (join lines), the start of insert
+set backspace=indent                " Allow backspacing over autoindent
+set backspace+=eol                  " Allow backspacing over line breaks (join lines)
+set backspace+=start                " Allow backspacing over the start of insert
 " }}}
 
 " list {{{
@@ -176,7 +178,7 @@ set backupdir=~/.vim/.backup/       " The directory for backup
 set backupskip+=.git/*              " A list of file patterns which no backup
 set backupcopy=auto                 " Auto choose copy or override
 set backupext=.bak                  " A string appended to backup file names
-" set patchmode=.org                  " A string appended to patch file names, don't use in most cases
+" set patchmode=.org                  " A string appended to patch file names, don't use
 
 set swapfile                        " Use a swapfile for the buffer
 if !isdirectory(expand("~/.vim/.swp"))
@@ -210,7 +212,10 @@ set noautochdir                     " Don't auto change current directory
 " autocmd {{{
 if has("autocmd")
     " Restore the cursor line when reopen a file
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    autocmd BufReadPost *
+                \ if line("'\"") > 1 && line("'\"") <= line("$")
+                \ | exe "normal! g'\""
+                \ | endif
 
     " Java {{{
     autocmd filetype java set textwidth=100
@@ -290,3 +295,4 @@ endif
 " }}}
 
 " vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
+" vim: set textwidth=100 colorcolumn=100:
