@@ -1,11 +1,12 @@
-#!/usr/bin/bash
+#!/bin/sh
 
-#解析参数
+# Parse parameters
 while getopts "h n a u l c: d:" option
 do
     case $option in
         h)
-            echo "Help's document is not ready.";;
+            # TODO: help hint
+            echo "The help document is not ready!";;
         n)
             new=true;;
         a)
@@ -19,21 +20,21 @@ do
         d)
             delete=$OPTARG;;
         r)
+            # TODO: rename
             rename=$OPTARG;;
         *)
             echo There are some errors in arguments.
     esac
 done
 
-echo ----------------------------------------
-
-#检查路径
+# Check directory
 tagdir=~/.vim/tags
-if [[ ! ( -d $tagdir ) ]];
-    then mkdir -p $tagdir
+if [[ ! ( -d $tagdir ) ]]
+then
+    mkdir -p $tagdir
 fi
 
-#记录开始时间
+# Record the time of start
 if [[ -n $new$update ]]; then
     echo "Begin!"
     DATE=$(date)
@@ -41,91 +42,94 @@ if [[ -n $new$update ]]; then
     START=$(date +%s)
 fi
 
-#把当前tag移动到文件夹内
+# Move current tags to backup if needed
 if [[ -n $new$change ]]; then
     name=$(cat $tagdir/tagname)
     if [[ -n $name ]]; then
         mkdir -p $tagdir/$name
-        #把当前tag移动到文件夹内
         mv $tagdir/cscope.* $tagdir/$name
         mv $tagdir/*.files $tagdir/$name
         mv $tagdir/tag* $tagdir/$name
-        echo $name的tag已被移动到$name的文件夹中
+        echo Default -\> $tagdir/$name
     fi
 fi
 
-#切换tags #把指定tag移动出来
+# Move specified tag to default if needed
 if [[ -n $change ]]; then
+    # FIXME: Not working in Mac OS X
     for name in $(ls $tagdir)
     do
         if [[ $name == $change ]]; then
             mv $tagdir/$change/* $tagdir/
             rmdir $tagdir/$change
-            echo $name的tag已被移动到默认的文件夹中
+            echo $tagdir/$name -\> Default
             break
         fi
     done
 fi
 
-#配置filepath.files
+# Make `filepath.files`
 paths=filepath.files
 if [[ -n $new$add ]]; then
-    #创建需要处理的文件目录
     find $PWD -name '*.java' \
         -or -name '*.aidl' \
         -or -name '*.c' \
         -or -name '*.h' \
         -or -name '*.cpp' \
-        -or -name '*.mk' \
         >> $tagdir/$paths
+    echo $paths Done.
 fi
 
-#生成ctags和cscope的tags
+# Generate tags of `ctags` and `cscope`
 if [[ -n $new$update ]]; then
     if [[ ! ( -f $tagdir/$paths ) ]]; then
-        #仍然要创建
-        echo $paths is still creating!
-        find $PWD -name '*.java' -or -name '*.xml' -or -name '*.c' -or -name '*.h' -or -name '*.cpp' -or -name '*.mk' > $tagdir/$paths
+        echo $paths not found!
+        exit -1
     fi
+
     ctags -L $tagdir/$paths -f $tagdir/tags
     echo ctags file is created.
     cscope -Rbkq -i $tagdir/$paths -f $tagdir/cscope.out
     echo cscope files are created.
 
-    #保存tags的名称，默认为父文件夹名
+    # Store current directory name as default tag name in file
     echo ${PWD##*/} > $tagdir/tagname
 
-    #显示处理时间
-    echo ----------------------------------------------------------
+    # Display duration and date
+    echo --------------------------------
     echo Begin time: $DATE
     time=$(($(date +%s) - $START))
-    echo Working time duration: $(($time / 3600)) h $(($time / 60 % 3600)) m $(($time % 60)) s
-    DATE=$(date)
-    echo End time: $DATE
-    echo ----------------------------------------------------------
+    echo Working time duration: \
+        $(($time / 3600)) h $(($time / 60 % 3600)) m $(($time % 60)) s
+    echo End time: $(date)
+    echo --------------------------------
 fi
 
-#记录开始时间
+# Delete the specified tag
 if [[ -n $delete ]]; then
     for name in $(ls $tagdir)
     do
         if [[ $name == $delete ]]; then
             rm -rf $tagdir/$delete/
-            echo $name的tag已被删除
+            echo $tagdir/$name -\>
             break
         fi
     done
 fi
 
-#显示既有的列表
+# Display current tags' list
 if [[ -n $new$list ]]; then
     name=$(cat $tagdir/tagname)
-    echo "当前的tag是：" $name
-    echo "其它的tag有："
+    echo "Default tag: " $name
+    echo "Other tag:"
+    # FIXME: Not working in Mac OS X
     for name in $(ls $tagdir)
     do
         [ -d $tagdir/$name ] && echo $name
     done
 fi
 
-echo ----------------------------------------
+echo --------------------------------
+
+# vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
+# vim: set textwidth=80 colorcolumn=80:
