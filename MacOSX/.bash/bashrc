@@ -7,7 +7,8 @@
 # export {
 # ls
 export CLICOLOR=1                   # Colorize `ls`
-export CLICOLOR_FORCE=1             # Always
+# Disable this because of `make` completion error
+# export CLICOLOR_FORCE=1             # Always
 export LSCOLORS=gxfxaxdxcxegedabagacad
 # grep
 export GREP_OPTIONS='--color=always'
