@@ -11,7 +11,8 @@ mcd () {
 
 # extract varioua condensed files
 myextract () {
-    if [ -f $1 ] ; then
+    if [ -f $1 ]
+    then
         case $1 in
             *.tar.bz2)   tar xjf $1     ;;
             *.tar.gz)    tar xzf $1     ;;
@@ -28,5 +29,16 @@ myextract () {
         esac
     else
         echo "'$1' is not a valid file"
+    fi
+}
+
+# make tags for Vim
+tagsmgr () {
+    script=~/.bash/tags_manager.sh
+    if [ -f $script ]
+    then
+        $script $*
+    else
+        echo $script not found!
     fi
 }
