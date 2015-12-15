@@ -45,5 +45,15 @@ tagsmgr () {
     fi
 }
 
+printcolor () {
+    script=~/.bash/print_color.bash
+    if [ -f $script ]
+    then
+        $script $*
+    else
+        echo $script not found!
+    fi
+}
+
 # vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=syntax:
 # vim: set textwidth=80 colorcolumn=80:
