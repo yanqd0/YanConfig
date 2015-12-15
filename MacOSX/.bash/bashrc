@@ -1,40 +1,51 @@
+#!/usr/bin/env bash
+
 # YanConfig Copyright (C) 2015 yanqd0@gmail.com
 #
 # This program comes with ABSOLUTELY NO WARRANTY under the terms of GPLv3.
 # This is free software, and you are welcome to redistribute it under certain
 # conditions; see the LISENSE in the root of this project.
 
-# export {
+# export {{{
+
 # ls
 export CLICOLOR=1                   # Colorize `ls`
 # Disable this because of `make` completion error
 # export CLICOLOR_FORCE=1             # Always
 export LSCOLORS=gxfxaxdxcxegedabagacad
+
 # grep
 export GREP_OPTIONS='--color=always'
 export GREP_COLOR='5;40'
-# }
 
-# shopt {
+# }}}
+
+# shopt {{{
 shopt -s checkwinsize               # Check the window size and update if necessary,
 shopt -s histappend                 # Append to the history file
 shopt -s cdspell                    # Auto amend directory error
 shopt -s extglob                    # Several extended pattern matching operators are recognized
-# }
+# }}}
 
-# sub configs {
+# sub configs {{{
+
 # Setting git completion
-if [ -f ~/.bash/git-completion.bash ]; then
+if [ -f ~/.bash/git-completion.bash ]
+then
     . ~/.bash/git-completion.bash
 fi
 
-# functions
-if [ -f ~/.bash/function.bash ]; then
+if [ -f ~/.bash/function.bash ]
+then
     . ~/.bash/function.bash
 fi
 
-# alias
-if [ -f ~/.bash/alias.bash ]; then
+if [ -f ~/.bash/alias.bash ]
+then
     . ~/.bash/alias.bash
 fi
-# }
+
+# }}}
+
+# vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
+# vim: set textwidth=80 colorcolumn=80:
