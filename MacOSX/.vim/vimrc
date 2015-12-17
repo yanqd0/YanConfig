@@ -255,7 +255,9 @@ map <leader>tm :tabmove
 " cscope {{{
 if has("cscope")
     set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
+    " Add or kill cscope tags connection
     nnoremap <leader>sa :cs add ~/.vim/tags/cscope.out<CR>
+    nnoremap <leader>sk :cscope kill .<CR>
     " 0 or s: Find this C symbol
     nnoremap <leader>ss :cs find s <C-R>=expand("<cword>")<cr><cr>
     " 1 or g: Find this definition
