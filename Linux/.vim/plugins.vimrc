@@ -52,9 +52,18 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_register_as_syntastic_checker = 1
 
 Plugin 'ervandew/eclim'
-nnoremap <silent> <leader>jc :JavaCorrect<CR>
-nnoremap <silent> <leader>ru :RefactorUndo<CR>
-nnoremap <silent> <leader>rr :RefactorRedo<CR>
+autocmd filetype java call MyEclimJavaConfig()
+function! MyEclimJavaConfig()
+    nnoremap <leader>bf :BuffersToggle<CR>
+    let g:EclimBuffersDefaultAction = 'edit'
+    nnoremap <leader>jc :JavaCorrect<CR>
+    nnoremap <leader>jo :JavaImportOrganize<CR>
+    nnoremap <leader>jh :JavaHierarchy<CR>
+    nnoremap <leader>ji :JavaImpl<CR>
+    nnoremap <leader>jr :JavaRename<Space>
+    nnoremap <leader>ru :RefactorUndo<CR>
+    nnoremap <leader>rr :RefactorRedo<CR>
+endfunction
 
 " }}}
 
