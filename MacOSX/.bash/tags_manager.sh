@@ -36,9 +36,7 @@ fi
 
 # Record the time of start
 if [[ -n $new$update ]]; then
-    echo "Begin!"
     DATE=$(date)
-    echo $DATE
     START=$(date +%s)
 fi
 
@@ -89,7 +87,7 @@ if [[ -n $new$update ]]; then
 
     ctags -L $tagdir/$paths -f $tagdir/tags
     echo ctags file is created.
-    cscope -Rbkq -i $tagdir/$paths -f $tagdir/cscope.out
+    cscope -vRbkq -i $tagdir/$paths -f $tagdir/cscope.out
     echo cscope files are created.
 
     # Store current directory name as default tag name in file
@@ -111,7 +109,6 @@ if [[ -n $delete ]]; then
     do
         if [[ $name == $delete ]]; then
             rm -rf $tagdir/$delete/
-            echo $tagdir/$name -\>
             break
         fi
     done
@@ -120,16 +117,12 @@ fi
 # Display current tags' list
 if [[ -n $new$list ]]; then
     name=$(cat $tagdir/tagname)
-    echo "Default tag: " $name
-    echo "Other tag:"
-    # FIXME: Not working in Mac OS X
+    echo "* ""\033[1;32;401m"$name"\033[0m"
     for name in $(ls $tagdir)
     do
-        [ -d $tagdir/$name ] && echo $name
+        [ -d $tagdir/$name ] && echo "  "$name
     done
 fi
-
-echo --------------------------------
 
 # vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
 # vim: set textwidth=80 colorcolumn=80:
