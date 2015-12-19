@@ -186,11 +186,14 @@ Plugin 'bling/vim-airline'
 
 " }}}
 
+Plugin 'sjl/gundo.vim'
+nnoremap <Leader>ud :GundoToggle<CR>
+let g:gundo_right = 1               " Let the Gundo graph window at the right
+let g:gundo_preview_bottom = 1      " Let the preview window at the bottom
+
 Plugin 'TaskList.vim'
 nnoremap <leader>td :TaskList<CR>
 
-Plugin 'sjl/gundo.vim'
-nnoremap <Leader>ud :GundoToggle<CR>
 " }}}
 
 " Git {{{
