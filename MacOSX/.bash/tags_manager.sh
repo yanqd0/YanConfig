@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# YanConfig Copyright (C) 2015 yanqd0@gmail.com
+#
+# This program comes with ABSOLUTELY NO WARRANTY under the terms of GPLv3.
+# This is free software, and you are welcome to redistribute it under certain
+# conditions; see the LISENSE in the root of this project.
+
 # Parse parameters
 while getopts "h r n a u l c: d:" option
 do
@@ -49,8 +55,9 @@ fi
 
 # Move current tags to backup if needed
 if [[ -n $new$change ]]; then
-    name=$(cat $tagdir/tagname)
-    if [[ -n $name ]]; then
+    if [[ -f $tagdir/tagname ]]
+    then
+        name=$(cat $tagdir/tagname)
         mkdir -p $tagdir/$name
         mv $tagdir/cscope.* $tagdir/$name
         mv $tagdir/*.files $tagdir/$name
@@ -61,7 +68,6 @@ fi
 
 # Move specified tag to default if needed
 if [[ -n $change ]]; then
-    # FIXME: Not working in Mac OS X
     for name in $(ls $tagdir)
     do
         if [[ $name == $change ]]; then
@@ -82,16 +88,30 @@ if [[ -n $new$add ]]; then
         -or -name '*.h' \
         -or -name '*.cpp' \
         >> $tagdir/$paths
-    echo $paths Done.
+    if test -s $tagdir/$paths
+    then
+        echo $tagdir/$paths Done.
+    fi
 fi
 
 # Generate tags of `ctags` and `cscope`
 if [[ -n $new$update ]]; then
-    if [[ ! ( -f $tagdir/$paths ) ]]; then
-        echo $paths not found!
+    # Check filepath.files is not empty
+    if [[ ! ( -f $tagdir/$paths ) ]]
+    then
+        echo "\033[1;31;401m" \
+            $paths not found! \
+            "\033[0m"
         exit -1
+    elif ! ( test -s $tagdir/$paths )
+    then
+        echo "\033[1;31;401m" \
+            $paths is empty! \
+            "\033[0m"
+        exit -2
     fi
 
+    # Make tags
     ctags -L $tagdir/$paths -f $tagdir/tags
     echo ctags file is created.
     cscope -vRbkq -i $tagdir/$paths -f $tagdir/cscope.out
@@ -101,13 +121,15 @@ if [[ -n $new$update ]]; then
     echo ${PWD##*/} > $tagdir/tagname
 
     # Display duration and date
-    echo --------------------------------
-    echo Begin time: $DATE
     time=$(($(date +%s) - $START))
-    echo Working time duration: \
-        $(($time / 3600)) h $(($time / 60 % 3600)) m $(($time % 60)) s
-    echo End time: $(date)
-    echo --------------------------------
+    echo "\033[0;30;46m" \
+        "Begin: $DATE"
+    echo " End  : $(date)"
+    echo " Duration:" \
+        $(($time / 3600)) h \
+        $(($time / 60 % 3600)) m \
+        $(($time % 60)) s \
+        "\033[0m"
 fi
 
 # Delete the specified tag
@@ -123,8 +145,14 @@ fi
 
 # Display current tags' list
 if [[ -n $new$list ]]; then
-    name=$(cat $tagdir/tagname)
-    echo "* ""\033[1;32;401m"$name"\033[0m"
+    if [[ -f $tagdir/tagname ]]
+    then
+        echo "*""\033[1;32;401m" \
+            $(cat $tagdir/tagname) \
+            "\033[0m"
+    else
+        echo "*"
+    fi
     for name in $(ls $tagdir)
     do
         [ -d $tagdir/$name ] && echo "  "$name
