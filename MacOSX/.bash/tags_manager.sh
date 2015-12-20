@@ -1,12 +1,14 @@
 #!/bin/sh
 
 # Parse parameters
-while getopts "h n a u l c: d:" option
+while getopts "h r n a u l c: d:" option
 do
     case $option in
         h)
             # TODO: help hint
             echo "The help document is not ready!";;
+        r)
+            reset=true;;
         n)
             new=true;;
         a)
@@ -19,9 +21,6 @@ do
             change=$OPTARG;;
         d)
             delete=$OPTARG;;
-        r)
-            # TODO: rename
-            rename=$OPTARG;;
         *)
             echo There are some errors in arguments.
     esac
@@ -32,6 +31,14 @@ tagdir=~/.vim/tags
 if [[ ! ( -d $tagdir ) ]]
 then
     mkdir -p $tagdir
+fi
+
+# Reset
+if [[ -n $reset ]]
+then
+    rm -rf $tagdir
+    mkdir -p $tagdir
+    exit 0
 fi
 
 # Record the time of start
