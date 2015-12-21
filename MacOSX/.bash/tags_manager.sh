@@ -11,8 +11,7 @@ while getopts "h r n a u l c: d:" option
 do
     case $option in
         h)
-            # TODO: help hint
-            echo "The help document is not ready!";;
+            help=true;;
         r)
             reset=true;;
         n)
@@ -28,9 +27,52 @@ do
         d)
             delete=$OPTARG;;
         *)
-            echo There are some errors in arguments.
+            echo "\033[1;31;401m" \
+                There are some errors in arguments. See help: \
+                "\033[0m"
+            help=true;;
     esac
 done
+
+# Help
+if [[ -n $help ]]
+then
+    echo " usage: tagsmgr [-h] [-n] [-l] [-c <TAG>] [-d <TAG>]"
+    echo "                [-r] [-a] [-u]"
+    echo "\033[1;33;401m" \
+        "-h      " \
+        "\033[0m" \
+        Show the help.
+    echo "\033[1;33;401m" \
+        "-n      " \
+        "\033[0m" \
+        Creat a new tag in current directory.
+    echo "\033[1;33;401m" \
+        "-l      " \
+        "\033[0m" \
+        Show the list of existed tags.
+    echo "\033[1;33;401m" \
+        "-c <TAG>" \
+        "\033[0m" \
+        Change the default tag to \<TAG\>
+    echo "\033[1;33;401m" \
+        "-d <TAG>" \
+        "\033[0m" \
+        Delete the tag named \<TAG\>
+    echo "\033[1;33;401m" \
+        "-r      " \
+        "\033[0m" \
+        Reset \(clear\) all the tags.
+    echo "\033[1;33;401m" \
+        "-a      " \
+        "\033[0m" \
+        Add current directory to filepath.files .
+    echo "\033[1;33;401m" \
+        "-u      " \
+        "\033[0m" \
+        Update the default tags by filepath.files .
+    exit -1
+fi
 
 # Check directory
 tagdir=~/.vim/tags
