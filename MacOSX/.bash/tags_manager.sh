@@ -55,7 +55,8 @@ fi
 
 # Move current tags to backup if needed
 if [[ -n $new$change ]]; then
-    if [[ -f $tagdir/tagname ]]
+    if [[ (  -n $new && -f $tagdir/tagname ) \
+        || ( -n $change && -d $tagdir/$change ) ]]
     then
         name=$(cat $tagdir/tagname)
         mkdir -p $tagdir/$name
@@ -67,16 +68,19 @@ if [[ -n $new$change ]]; then
 fi
 
 # Move specified tag to default if needed
-if [[ -n $change ]]; then
-    for name in $(ls $tagdir)
-    do
-        if [[ $name == $change ]]; then
-            mv $tagdir/$change/* $tagdir/
-            rmdir $tagdir/$change
-            echo $tagdir/$name -\> Default
-            break
-        fi
-    done
+if [[ -n $change ]]
+then
+    if [[ -d $tagdir/$change ]]
+    then
+        mv $tagdir/$change/* $tagdir/
+        rmdir $tagdir/$change
+        echo $tagdir/$name -\> Default
+    else
+        echo "\033[1;31;401m" \
+            " The tag <$change> not found!" \
+            "\033[0m"
+        exit -2
+    fi
 fi
 
 # Make `filepath.files`
@@ -102,13 +106,13 @@ if [[ -n $new$update ]]; then
         echo "\033[1;31;401m" \
             $paths not found! \
             "\033[0m"
-        exit -1
+        exit -3
     elif ! ( test -s $tagdir/$paths )
     then
         echo "\033[1;31;401m" \
             $paths is empty! \
             "\033[0m"
-        exit -2
+        exit -4
     fi
 
     # Make tags
@@ -144,7 +148,7 @@ if [[ -n $delete ]]; then
 fi
 
 # Display current tags' list
-if [[ -n $new$list ]]; then
+if [[ -n $new$list$change ]]; then
     if [[ -f $tagdir/tagname ]]
     then
         echo "*""\033[1;32;401m" \
