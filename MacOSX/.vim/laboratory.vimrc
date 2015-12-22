@@ -8,3 +8,10 @@ match WarningMsg /\k*\%#\k*/        " highlight current cursor word
 
 highlight MyBlank ctermbg=red ctermfg=black guibg=red guifg=black
 match MyBlank /\t\|\r\|\s\s*\n/
+
+map <leader>ff :call FormatFile()<CR>
+function! FormatFile()
+    %s/\s*$//g                      " Delete tail blanks
+    retab                           " Replace <TAG> by <Space>
+    normal gg=G
+endfunction
