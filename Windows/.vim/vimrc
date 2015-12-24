@@ -190,9 +190,9 @@ nnoremap <leader>pc :let @*=@"<CR>
 " Set current window directory same as current file
 nnoremap <leader>cd :lcd %:p:h<CR>
 " Reload vimrc
-nnoremap <Leader>rc :source ~/.vim/vimrc<CR>
+nnoremap <Leader>rc :source $MYVIMRC<CR>
 " Open vimrc
-nnoremap <Leader>oc :edit ~/.vim/vimrc<CR>
+nnoremap <Leader>oc :edit $MYVIMRC<CR>
 
 if has("windows")                   " Windows
     map <C-j> <C-W>j
