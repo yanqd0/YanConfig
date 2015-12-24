@@ -18,7 +18,7 @@ while getopts "h r n a u l c: d:" option
 do
     case $option in
         h)
-            help=true;;
+            helpdoc=true;;
         r)
             reset=true;;
         n)
@@ -37,12 +37,17 @@ do
             echo -e "\033[${WARNING_COLOR}m" \
                 There are some errors in arguments. See help: \
                 "\033[${COLOR_END}m"
-            help=true;;
+            helpdoc=true;;
     esac
 done
 
+if [[ -z $* ]]
+then
+    helpdoc=true
+fi
+
 # Help
-if [[ -n $help ]]
+if [[ -n $helpdoc ]]
 then
     echo " usage: tagsmgr [-h] [-n] [-l] [-c <TAG>] [-d <TAG>]"
     echo "                [-r] [-a] [-u]"
