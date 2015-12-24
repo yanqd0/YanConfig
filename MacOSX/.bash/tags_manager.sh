@@ -1,10 +1,17 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # YanConfig Copyright (C) 2015 yanqd0@gmail.com
 #
 # This program comes with ABSOLUTELY NO WARRANTY under the terms of GPLv3.
 # This is free software, and you are welcome to redistribute it under certain
 # conditions; see the LISENSE in the root of this project.
+
+# Colors
+WARNING_COLOR="1;31"
+SELECTED_COLOR="1;32"
+HINT_COLOR="1;33"
+TIME_COLOR="0;30;46"
+COLOR_END="0"
 
 # Parse parameters
 while getopts "h r n a u l c: d:" option
@@ -27,9 +34,9 @@ do
         d)
             delete=$OPTARG;;
         *)
-            echo "\033[1;31;401m" \
+            echo -e "\033[${WARNING_COLOR}m" \
                 There are some errors in arguments. See help: \
-                "\033[0m"
+                "\033[${COLOR_END}m"
             help=true;;
     esac
 done
@@ -39,37 +46,37 @@ if [[ -n $help ]]
 then
     echo " usage: tagsmgr [-h] [-n] [-l] [-c <TAG>] [-d <TAG>]"
     echo "                [-r] [-a] [-u]"
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-h      " \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Show the help.
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-n      " \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Creat a new tag in current directory.
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-l      " \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Show the list of existed tags.
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-c <TAG>" \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Change the default tag to \<TAG\>
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-d <TAG>" \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Delete the tag named \<TAG\>
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-r      " \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Reset \(clear\) all the tags.
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-a      " \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Add current directory to filepath.files .
-    echo "\033[1;33;401m" \
+    echo -e "\033[${HINT_COLOR}m" \
         "-u      " \
-        "\033[0m" \
+        "\033[${COLOR_END}m" \
         Update the default tags by filepath.files .
     exit -1
 fi
@@ -118,9 +125,9 @@ then
         rmdir $tagdir/$change
         echo $tagdir/$name -\> Default
     else
-        echo "\033[1;31;401m" \
+        echo -e "\033[${WARNING_COLOR}m" \
             " The tag <$change> not found!" \
-            "\033[0m"
+            "\033[${COLOR_END}m"
         exit -2
     fi
 fi
@@ -145,15 +152,15 @@ if [[ -n $new$update ]]; then
     # Check filepath.files is not empty
     if [[ ! ( -f $tagdir/$paths ) ]]
     then
-        echo "\033[1;31;401m" \
+        echo -e "\033[${WARNING_COLOR}m" \
             $paths not found! \
-            "\033[0m"
+            "\033[${COLOR_END}m"
         exit -3
     elif ! ( test -s $tagdir/$paths )
     then
-        echo "\033[1;31;401m" \
+        echo -e "\033[${WARNING_COLOR}m" \
             $paths is empty! \
-            "\033[0m"
+            "\033[${COLOR_END}m"
         exit -4
     fi
 
@@ -168,14 +175,14 @@ if [[ -n $new$update ]]; then
 
     # Display duration and date
     time=$(($(date +%s) - $START))
-    echo "\033[0;30;46m" \
-        "Begin: $DATE"
-    echo " End  : $(date)"
-    echo " Duration:" \
+    echo -e "\033[${TIME_COLOR}m"
+    echo "Begin: $DATE"
+    echo "End  : $(date)"
+    echo -e "Duration:" \
         $(($time / 3600)) h \
         $(($time / 60 % 3600)) m \
         $(($time % 60)) s \
-        "\033[0m"
+        "\033[${COLOR_END}m"
 fi
 
 # Delete the specified tag
@@ -193,9 +200,9 @@ fi
 if [[ -n $new$list$change ]]; then
     if [[ -f $tagdir/tagname ]]
     then
-        echo "*""\033[1;32;401m" \
+        echo -e "*""\033[${SELECTED_COLOR}m" \
             $(cat $tagdir/tagname) \
-            "\033[0m"
+            "\033[${COLOR_END}m"
     else
         echo "*"
     fi
