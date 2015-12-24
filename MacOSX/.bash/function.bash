@@ -36,7 +36,7 @@ myextract () {
 
 # make tags for Vim
 tagsmgr () {
-    script=~/.bash/tags_manager.sh
+    script=~/.bash/tags_manager.bash
     if [ -f $script ]
     then
         $script $*
