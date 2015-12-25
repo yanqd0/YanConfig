@@ -118,13 +118,14 @@ let g:tagbar_singleclick = 1        " Single-click on a tag jumps to it
 Plugin 'taglist.vim'
 nnoremap <silent> <F8> :TlistToggle<CR>
 " let Tlist_Auto_Open=1               " Open taglist when start-up
-" let Tlist_GainFocus_On_ToggleOpen=1 " Jump to taglist window on open
-" let Tlist_Close_On_Select=1         " Close the taglist window when selected
+let Tlist_GainFocus_On_ToggleOpen=1 " Jump to taglist window on open
+let Tlist_Close_On_Select=1         " Close the taglist window when selected
 let Tlist_Exit_OnlyWindow=1         " Close Vim if the taglist is the only window
 let Tlist_Enable_Fold_Column=1      " Show the fold indicator column
 let Tlist_File_Fold_Auto_Close=1    " Fold all other buffers
 let Tlist_Use_Right_Window=1        " Place the taglist window on the right side
 let Tlist_Use_SingleClick=1         " Single-click on a tag jumps to it
+let Tlist_WinWidth = 60             " Width of the Taglist window
 
 " }}}
 
