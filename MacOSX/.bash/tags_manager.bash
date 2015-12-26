@@ -6,12 +6,15 @@
 # This is free software, and you are welcome to redistribute it under certain
 # conditions; see the LISENSE in the root of this project.
 
-# Colors
+# Colors for `echo`
 WARNING_COLOR="1;31"
 SELECTED_COLOR="1;32"
 HINT_COLOR="1;33"
 TIME_COLOR="0;30;46"
 COLOR_END="0"
+
+tagdir=~/.vim/.tags
+paths=filepaths.txt
 
 # Parse parameters
 while getopts "h r n a u l c: d:" option
@@ -78,16 +81,15 @@ then
     echo -e "\033[${HINT_COLOR}m" \
         "-a      " \
         "\033[${COLOR_END}m" \
-        Add current directory to filepath.files .
+        Add current directory to $paths .
     echo -e "\033[${HINT_COLOR}m" \
         "-u      " \
         "\033[${COLOR_END}m" \
-        Update the default tags by filepath.files .
+        Update the default tags by $paths .
     exit -1
 fi
 
 # Check directory
-tagdir=~/.vim/tags
 if [[ ! ( -d $tagdir ) ]]
 then
     mkdir -p $tagdir
@@ -117,7 +119,7 @@ if [[ -n $new$change ]]; then
             name=$(cat $tagdir/tagname)
             mkdir -p $tagdir/$name
             mv $tagdir/cscope.* $tagdir/$name
-            mv $tagdir/*.files $tagdir/$name
+            mv $tagdir/*.txt $tagdir/$name
             mv $tagdir/tag* $tagdir/$name
             echo Default -\> $tagdir/$name
         fi
@@ -140,8 +142,7 @@ then
     fi
 fi
 
-# Make `filepath.files`
-paths=filepath.files
+# Make `filepaths.txt`
 if [[ -n $new$add ]]; then
     find $PWD -name '*.java' \
         -or -name '*.aidl' \
@@ -157,7 +158,7 @@ fi
 
 # Generate tags of `ctags` and `cscope`
 if [[ -n $new$update ]]; then
-    # Check filepath.files is not empty
+    # Check filepaths.txt is not empty
     if [[ ! ( -f $tagdir/$paths ) ]]
     then
         echo -e "\033[${WARNING_COLOR}m" \
