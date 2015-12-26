@@ -112,12 +112,15 @@ if [[ -n $new$change ]]; then
     if [[ (  -n $new && -f $tagdir/tagname ) \
         || ( -n $change && -d $tagdir/$change ) ]]
     then
-        name=$(cat $tagdir/tagname)
-        mkdir -p $tagdir/$name
-        mv $tagdir/cscope.* $tagdir/$name
-        mv $tagdir/*.files $tagdir/$name
-        mv $tagdir/tag* $tagdir/$name
-        echo Default -\> $tagdir/$name
+        if ( test -s $tagdir/tagname )
+        then
+            name=$(cat $tagdir/tagname)
+            mkdir -p $tagdir/$name
+            mv $tagdir/cscope.* $tagdir/$name
+            mv $tagdir/*.files $tagdir/$name
+            mv $tagdir/tag* $tagdir/$name
+            echo Default -\> $tagdir/$name
+        fi
     fi
 fi
 

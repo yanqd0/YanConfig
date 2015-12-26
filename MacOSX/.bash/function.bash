@@ -11,7 +11,7 @@ mcd () {
     mkdir -p "$1" && cd "$1";
 }
 
-# extract varioua condensed files
+# extract various condensed files
 myextract () {
     if [ -f $1 ]
     then
@@ -55,7 +55,7 @@ printcolor () {
     fi
 }
 
-# save cmd to a file
+# save commands to a file
 cmd2sh () {
     if [[ -n $2 ]]
     then
