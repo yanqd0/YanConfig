@@ -88,8 +88,16 @@ Plugin 'tpope/vim-surround'
 
 " }}}
 
-Plugin 'tpope/vim-repeat'
+" Snippets {{{
 Plugin 'SirVer/ultisnips'
+nnoremap <leader>us :UltiSnipsEdit<CR>
+let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsNoPythonWarning = 1
+let g:UltiSnipsSnippetsDir = $HOME."/.vim/.UltiSnips"
+let g:UltiSnipsSnippetDirectories = [".UltiSnips", ".YanSnippets"]
+" }}}
+
+Plugin 'tpope/vim-repeat'
 
 " }}}
 
