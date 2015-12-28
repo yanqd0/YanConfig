@@ -45,6 +45,7 @@ Plugin 'Valloric/YouCompleteMe'
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_use_ultisnips_completer = 1
 let g:ycm_key_invoke_completion = '<C-/>'
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
