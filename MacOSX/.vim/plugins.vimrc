@@ -98,8 +98,8 @@ Plugin 'SirVer/ultisnips'
 noremap <leader>us :UltiSnipsEdit<CR>
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsNoPythonWarning = 1
-let g:UltiSnipsSnippetsDir = $HOME."/.vim/.UltiSnips"
-let g:UltiSnipsSnippetDirectories = [".UltiSnips", ".YanSnippets"]
+let g:UltiSnipsSnippetsDir = $HOME."/.vim/.local_snippets"
+let g:UltiSnipsSnippetDirectories = [".local_snippets", ".remote_snippets"]
 " }}}
 
 Plugin 'tpope/vim-repeat'
