@@ -71,10 +71,8 @@ Plugin 'tpope/vim-commentary'
 
 Plugin 'yanqd0/vim-easymotion'
 let g:EasyMotion_smartcase = 1
-map <Space> <Plug>(easymotion-s2)
+noremap <Space> <Plug>(easymotion-s2)
 "let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-"map <Leader>j <Plug>(easymotion-j)
-"map <Leader>k <Plug>(easymotion-k)
 
 Plugin 'kshenoy/vim-signature'
 
@@ -96,7 +94,7 @@ Plugin 'tpope/vim-surround'
 
 " Snippets {{{
 Plugin 'SirVer/ultisnips'
-nnoremap <leader>us :UltiSnipsEdit<CR>
+noremap <leader>us :UltiSnipsEdit<CR>
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsNoPythonWarning = 1
 let g:UltiSnipsSnippetsDir = $HOME."/.vim/.UltiSnips"
@@ -110,14 +108,14 @@ Plugin 'tpope/vim-repeat'
 " tags {{{
 
 Plugin 'majutsushi/tagbar'
-nmap <silent> <F9> :TagbarToggle<CR>
+noremap <silent> <F9> :TagbarToggle<CR>
 let g:tagbar_width = 40             " Width of the Tagbar window
 let g:tagbar_autofocus = 1          " Jump to Tagbar window on open
 let g:tagbar_show_linenumbers=2     " Show relative line numbers
 let g:tagbar_singleclick = 1        " Single-click on a tag jumps to it
 
 Plugin 'taglist.vim'
-nnoremap <silent> <F8> :TlistToggle<CR>
+noremap <silent> <F8> :TlistToggle<CR>
 " let Tlist_Auto_Open=1               " Open taglist when start-up
 let Tlist_GainFocus_On_ToggleOpen=1 " Jump to taglist window on open
 let Tlist_Close_On_Select=1         " Close the taglist window when selected
@@ -150,8 +148,8 @@ let g:ctrlp_custom_ignore = {
             \ }
 
 Plugin 'scrooloose/nerdtree'
-nnoremap <silent> <F6> :NERDTreeToggle<CR>
-nnoremap <C-F6> :NERDTreeFind<CR>
+noremap <silent> <F6> :NERDTreeToggle<CR>
+noremap <C-F6> :NERDTreeFind<CR>
 " let loaded_nerd_tree=1              " Open NERD tree when start-up
 let NERDTreeChDirMode=2             " Set the root of NERD tree as current directory
 let NERDTreeQuitOnOpen=1            " Closes the tree window after opening a file
@@ -166,8 +164,8 @@ let NERDTreeAutoDeleteBuffer=1      " Auto delete invalid buffers
 
 " syntastic checking {{{
 Plugin 'scrooloose/syntastic'
-nnoremap <silent> <F3> :SyntasticCheck<CR>
-nnoremap <silent> <F4> :SyntasticToggleMode<CR>
+noremap <silent> <F3> :SyntasticCheck<CR>
+noremap <silent> <F4> :SyntasticToggleMode<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -188,19 +186,19 @@ Plugin 'bling/vim-airline'
 " }}}
 
 Plugin 'sjl/gundo.vim'
-nnoremap <Leader>ud :GundoToggle<CR>
+noremap <Leader>ud :GundoToggle<CR>
 let g:gundo_right = 1               " Let the Gundo graph window at the right
 let g:gundo_preview_bottom = 1      " Let the preview window at the bottom
 
 Plugin 'TaskList.vim'
-nnoremap <leader>td :TaskList<CR>
+noremap <leader>td :TaskList<CR>
 
 " }}}
 
 " Git {{{
 
 Plugin 'airblade/vim-gitgutter'
-nnoremap <silent> <leader>gg <ESC>:GitGutterToggle<CR>:GitGutterLineHighlightsToggle<CR>
+noremap <silent> <leader>gg <ESC>:GitGutterToggle<CR>:GitGutterLineHighlightsToggle<CR>
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_escape_grep = 1
@@ -227,7 +225,7 @@ augroup markdown
 augroup END
 
 Plugin 'MikeCoder/markdown-preview.vim'
-map <leader>m :MarkdownPreviewWithCustomCodeStyleCodeStyle GitHub monokai_sublime<CR>
+noremap <leader>m :MarkdownPreviewWithCustomCodeStyleCodeStyle GitHub monokai_sublime<CR>
 
 " }}}
 
