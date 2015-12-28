@@ -37,10 +37,10 @@ let g:indent_guides_auto_colors = 1
 
 " completion {{{
 
-Plugin 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = '<C-x><C-p>'
-let g:SuperTabMappingForward = '<Tab>'
-let g:SuperTabMappingBackward = '<S-Tab>'
+" Plugin 'ervandew/supertab'          " Deprecated by YouCompleteMe
+" let g:SuperTabDefaultCompletionType = '<C-x><C-p>'
+" let g:SuperTabMappingForward = '<Tab>'
+" let g:SuperTabMappingBackward = '<S-Tab>'
 
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_add_preview_to_completeopt = 1
