@@ -46,10 +46,16 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 0
 let g:ycm_key_invoke_completion = '<C-/>'
-let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_key_detailed_diagnostics = '<leader>yd'
+let g:ycm_filepath_completion_use_working_dir = 1
 
 Plugin 'ervandew/eclim'
 autocmd filetype java call MyEclimJavaConfig()
@@ -57,6 +63,7 @@ function! MyEclimJavaConfig()
     nnoremap <leader>bf :BuffersToggle<CR>
     let g:EclimBuffersDefaultAction = 'edit'
     nnoremap <leader>jc :JavaCorrect<CR>
+    nnoremap <leader>jp :JavaImport<CR>
     nnoremap <leader>jo :JavaImportOrganize<CR>
     nnoremap <leader>jh :JavaHierarchy<CR>
     nnoremap <leader>ji :JavaImpl<CR>
