@@ -108,12 +108,18 @@ Plugin 'tpope/vim-surround'
 " }}}
 
 " Snippets {{{
+
 Plugin 'SirVer/ultisnips'
 noremap <leader>us :UltiSnipsEdit<CR>
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsNoPythonWarning = 1
-let g:UltiSnipsSnippetsDir = $HOME."/.vim/.local_snippets"
-let g:UltiSnipsSnippetDirectories = [".local_snippets", ".remote_snippets"]
+let g:UltiSnipsSnippetsDir = $HOME."/.vim/.Snippets"
+let g:UltiSnipsSnippetDirectories = [".Snippets", "UltiSnips"]
+" Local snippets directory is `.Snippets`
+" Remote snippets directory is `UltiSnips`, provided by snippets-for-vim
+
+Plugin 'yanqd0/snippets-for-vim'
+
 " }}}
 
 Plugin 'tpope/vim-repeat'
