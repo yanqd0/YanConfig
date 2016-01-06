@@ -210,7 +210,7 @@ Plugin 'bling/vim-airline'
 " fullscreen {{{
 Plugin 'kkoenig/wimproved.vim'
 map <silent> <F11> :WToggleFullscreen<CR>
-map! <silent> <F11> <Esc>WToggleFullscreen<CR>a
+map! <silent> <F11> <Esc>:WToggleFullscreen<CR>a
 " }}}
 
 Plugin 'sjl/gundo.vim'
