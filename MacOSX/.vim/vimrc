@@ -31,8 +31,6 @@ endif
 
 " View {{{
 
-" view: sign, cmdline, statusline, cursor, mouse, window, tab, buffer
-
 " sign {{{
 set number                          " Show line numbers
 " set relativenumber                  " Show relative line numbers of cursor
