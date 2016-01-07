@@ -282,9 +282,11 @@ nnoremap <leader>pc :let @*=@"<CR>
 " Set current window directory same as current file
 nnoremap <leader>cd :lcd %:p:h<CR>
 " Reload vimrc
-nnoremap <Leader>rc :source $MYVIMRC<CR>
+nnoremap <leader>rc :source $MYVIMRC<CR>
 " Open vimrc
-nnoremap <Leader>oc :edit $MYVIMRC<CR>
+nnoremap <leader>oc :edit $MYVIMRC<CR>
+" Transform current file or selection to HTML
+nnoremap <leader>th :TOhtml<CR>
 " }}}
 
 " }}}
