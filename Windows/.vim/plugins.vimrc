@@ -60,6 +60,7 @@ let g:SuperTabMappingBackward = '<S-Tab>'
 " let g:ycm_filepath_completion_use_working_dir = 1
 
 Plugin 'ervandew/eclim'
+let g:EclimCompletionMethod = 'omnifunc'
 autocmd filetype java call MyEclimJavaConfig()
 function! MyEclimJavaConfig()
     noremap <leader>bf :BuffersToggle<CR>
