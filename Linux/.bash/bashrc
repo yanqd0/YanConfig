@@ -23,11 +23,6 @@ shopt -s extglob                    # Several extended pattern matching operator
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # sub configs {{{
-# Setting git completion
-if [ -f ~/.bash/git-completion.bash ]; then
-    . ~/.bash/git-completion.bash
-fi
-
 # functions
 if [ -f ~/.bash/function.bash ]; then
     . ~/.bash/function.bash
