@@ -4,26 +4,25 @@
 # This is free software, and you are welcome to redistribute it under certain
 # conditions; see the LISENSE in the root of this project.
 
-# export {
+# export {{{
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# grep
+export TERM=xterm-256color
 export GREP_COLOR='1;43'
-# }
+# }}}
 
-# shopt {
+# shopt {{{
 shopt -s checkwinsize               # Check the window size and update if necessary,
 shopt -s histappend                 # Append to the history file
 shopt -s cdspell                    # Auto amend directory error
 shopt -s extglob                    # Several extended pattern matching operators are recognized
-# }
+# }}}
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# sub configs {
+# sub configs {{{
 # Setting git completion
 if [ -f ~/.bash/git-completion.bash ]; then
     . ~/.bash/git-completion.bash
@@ -38,5 +37,7 @@ fi
 if [ -f ~/.bash/alias.bash ]; then
     . ~/.bash/alias.bash
 fi
-# }
+# }}}
 
+# vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
+# vim: set textwidth=80 colorcolumn=80:
