@@ -20,9 +20,9 @@ alias lra='ls -AR | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g
 # }}}
 
 # grep {{{
-alias grep='grep --color=always'
-alias fgrep='fgrep --color=always'
-alias egrep='egrep --color=always'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 # }}}
 
 # Jump back n directories at a time {{{
