@@ -19,7 +19,7 @@ noremap <silent> x <PageUp>
 " Toggle javascript enable or not
 noremap ,js :setlocal! javascript.enabled!<CR>:setlocal! javascript.enabled?<CR>
 
-highlight Hint::after content: attr(number); font-size:13pt
+highlight Hint::after content: attr(number); font-size:14pt
 highlight Normal color: black; background: white; font-size:14pt
 
 set editor='gvim -f'
