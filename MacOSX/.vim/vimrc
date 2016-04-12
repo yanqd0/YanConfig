@@ -218,8 +218,8 @@ if has("autocmd")
     " Java {{{
     autocmd filetype java set textwidth=100
     autocmd filetype java set colorcolumn=100
-    autocmd filetype java map <F5> :w!<CR>:execute "!javac %; java %:t:r"<CR>
-    autocmd filetype java map! <F5> <ESC>:w!<CR>:execute "!javac %; java %:t:r"<CR>
+    autocmd filetype java map <F5> :w!<CR>:execute "!javac % && java %:t:r"<CR>
+    autocmd filetype java map! <F5> <ESC>:w!<CR>:execute "!javac % && java %:t:r"<CR>
     " }}}
 
     " Python {{{
