@@ -229,6 +229,13 @@ if has("autocmd")
     autocmd filetype python map! <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>
     " }}}
 
+    " shell {{{
+    autocmd filetype sh set textwidth=80
+    autocmd filetype sh set colorcolumn=80
+    autocmd filetype sh map <F5> :w!<CR>:execute "!source %"<CR>
+    autocmd filetype sh map! <F5> <ESC>:w!<CR>:execute "!source %"<CR>
+    " }}}
+
 endif
 " }}}
 
