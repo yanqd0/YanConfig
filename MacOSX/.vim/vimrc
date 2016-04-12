@@ -219,28 +219,28 @@ if has("autocmd")
     autocmd filetype java set textwidth=100
     autocmd filetype java set colorcolumn=100
     autocmd filetype java map <F5> :w!<CR>:execute "!javac % && java %:t:r"<CR>
-    autocmd filetype java map! <F5> <ESC>:w!<CR>:execute "!javac % && java %:t:r"<CR>
+    autocmd filetype java imap <F5> <ESC>:w!<CR>:execute "!javac % && java %:t:r"<CR>a
     " }}}
 
     " Python {{{
     autocmd filetype python set textwidth=80
     autocmd filetype python set colorcolumn=80
     autocmd filetype python map <F5> :w!<CR>:execute "!python -u %"<CR>
-    autocmd filetype python map! <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>
+    autocmd filetype python imap <F5> <ESC>:w!<CR>:execute "!python -u %"<CR>a
     " }}}
 
     " sh {{{
     autocmd filetype sh set textwidth=80
     autocmd filetype sh set colorcolumn=80
     autocmd filetype sh map <F5> :w!<CR>:execute "!source %"<CR>
-    autocmd filetype sh map! <F5> <ESC>:w!<CR>:execute "!source %"<CR>
+    autocmd filetype sh imap <F5> <ESC>:w!<CR>:execute "!source %"<CR>a
     " }}}
 
     " vim {{{
     autocmd filetype vim set textwidth=80
     autocmd filetype vim set colorcolumn=80
     autocmd filetype vim map <F5> :w!<CR>:source %<CR>
-    autocmd filetype vim map! <F5> <ESC>:w!<CR>:source %<CR>
+    autocmd filetype vim imap <F5> <ESC>:w!<CR>:source %<CR>a
     " }}}
 
 endif
