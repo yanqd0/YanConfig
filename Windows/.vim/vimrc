@@ -266,7 +266,7 @@ nnoremap <leader>rc :source $MYVIMRC<CR>
 " Open vimrc
 nnoremap <leader>oc :edit $MYVIMRC<CR>
 " Transform current file or selection to HTML
-nnoremap <leader>th :TOhtml<CR>
+noremap <leader>th :TOhtml<CR>
 " }}}
 
 " }}}
