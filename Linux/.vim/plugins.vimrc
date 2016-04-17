@@ -294,6 +294,12 @@ Plugin 'chrisbra/csv.vim'
 
 " }}}
 
+" HTML {{{
+
+Plugin 'gorodinskiy/vim-coloresque'
+
+" }}}
+
 call vundle#end()
 filetype plugin indent on     " required!
 
