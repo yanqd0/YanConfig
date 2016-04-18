@@ -153,7 +153,7 @@ let Tlist_WinWidth = 60             " Width of the Taglist window
 
 " View {{{
 
-" files {{{
+" navigate {{{
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
@@ -169,6 +169,15 @@ let g:ctrlp_custom_ignore = {
             \ 'file': '\v\.(exe|so|dll)$',
             \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
             \ }
+
+Plugin 'tacahiroy/ctrlp-funky'
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_sort_by_mru = 1
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_funky_use_cache = 1
+let g:ctrlp_funky_nolim = 1
+nnoremap <Leader>cp :CtrlPFunky<CR>
+nnoremap <Leader>cf :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 
 Plugin 'scrooloose/nerdtree'
 noremap <silent> <F6> :NERDTreeToggle<CR>

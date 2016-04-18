@@ -160,8 +160,8 @@ let g:ctrlp_funky_sort_by_mru = 1
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_funky_use_cache = 1
 let g:ctrlp_funky_nolim = 1
-nnoremap <Leader>cf :CtrlPFunky<CR>
-nnoremap <Leader><Space> :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+nnoremap <Leader>cp :CtrlPFunky<CR>
+nnoremap <Leader>cf :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 
 Plugin 'scrooloose/nerdtree'
 noremap <silent> <F6> :NERDTreeToggle<CR>
