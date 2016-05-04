@@ -311,5 +311,11 @@ if filereadable(expand("~/.vim/laboratory.vimrc"))
 endif
 " }}}
 
+" local {{{
+if filereadable(expand('./.vimrc.local'))
+    source ./.vimrc.local
+endif
+" }}}
+
 " vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
 " vim: set textwidth=100 colorcolumn=100:
