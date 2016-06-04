@@ -15,3 +15,18 @@ function! FormatFile()
     retab                           " Replace <TAG> by <Space>
     normal gg=G
 endfunction
+
+" Delete consecutive same lines
+map <leader>dsc :g/^\(.*\)$\n\1$/d<CR>
+
+" Delete consecutive same empty lines
+map <leader>dse :g/^\s*$\n\s*$/d<CR>
+
+map <leader>dsl :call DeleteSameLine()<CR>
+function! DeleteSameLine()
+    let i=1|g/^/s//\=i.':'/|let i+=1
+    sort /^\d\{-}:/
+    g/^\d\{-}:\(.*\)$\n\d\{-}:\1$/d
+    sort n
+    %s/\d\{-}://
+endfunction
