@@ -7,7 +7,6 @@
 filetype off                        " Vundle required!
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'       " let Vundle manage Vundle
 
 " Syntax color {{{
@@ -19,8 +18,8 @@ Plugin 'tomasr/molokai'
 let g:molokai_original = 0
 let g:rehash256 = 0
 
-Plugin 'lsdr/monokai'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim'}
+Plugin 'lsdr/monokai'
 
 " indent {{{
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -73,7 +72,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'yanqd0/vim-easymotion'
 let g:EasyMotion_smartcase = 1
 map <Space> <Plug>(easymotion-s2)
-"let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+" let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 Plugin 'kshenoy/vim-signature'
 
@@ -170,7 +169,7 @@ noremap <C-F6> :NERDTreeFind<CR>
 let NERDTreeChDirMode=2             " Set the root of NERD tree as current directory
 let NERDTreeQuitOnOpen=1            " Closes the tree window after opening a file
 let NERDTreeShowBookmarks=1         " The bookmarks table will be displayed
-let NERDTreeWinPos=0                " Show the window at the left
+let NERDTreeWinPos=0                " Show the window at the left (1 means right)
 let NERDTreeWinSize=32              " Window size when the NERD tree is opened
 let NERDTreeRespectWildIgnore=1     " the 'wildignore' setting is respected
 let NERDTreeMouseMode=2             " Double click file and single click directory

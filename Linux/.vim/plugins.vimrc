@@ -185,7 +185,7 @@ noremap <C-F6> :NERDTreeFind<CR>
 let NERDTreeChDirMode=2             " Set the root of NERD tree as current directory
 let NERDTreeQuitOnOpen=1            " Closes the tree window after opening a file
 let NERDTreeShowBookmarks=1         " The bookmarks table will be displayed
-let NERDTreeWinPos=1                " Show the window at the right
+let NERDTreeWinPos=0                " Show the window at the left (1 means right)
 let NERDTreeWinSize=32              " Window size when the NERD tree is opened
 let NERDTreeRespectWildIgnore=1     " the 'wildignore' setting is respected
 let NERDTreeMouseMode=2             " Double click file and single click directory
@@ -194,16 +194,16 @@ let NERDTreeAutoDeleteBuffer=1      " Auto delete invalid buffers
 " }}}
 
 " syntastic checking {{{
-" Plugin 'scrooloose/syntastic'
-" noremap <silent> <F3> :SyntasticCheck<CR>
-" noremap <silent> <F4> :SyntasticToggleMode<CR>
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+Plugin 'scrooloose/syntastic'
+noremap <silent> <F3> :SyntasticCheck<CR>
+noremap <silent> <F4> :SyntasticToggleMode<CR>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " `pip install --user flake8` should be executed, for Python
 " }}}
 
@@ -291,6 +291,12 @@ Plugin 'pythoncomplete'             " Deprecated by YouCompleteMe
 
 " }}}
 
+" Textile {{{
+
+Plugin 'timcharper/textile.vim'
+
+" }}}
+
 " Vimperator {{{
 
 Plugin 'superbrothers/vim-vimperator'
@@ -310,7 +316,7 @@ Plugin 'gorodinskiy/vim-coloresque'
 " }}}
 
 call vundle#end()
-filetype plugin indent on     " required!
+filetype plugin indent on           " Vundle required!
 
 " vim: set shiftwidth=4 softtabstop=4 expandtab foldmethod=marker:
 " vim: set textwidth=100 colorcolumn=100:
