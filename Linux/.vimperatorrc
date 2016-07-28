@@ -29,6 +29,7 @@ set previouspattern+=s*上一页|上一张|prev|上一篇|上一頁|上页|前�
 set visualbell
 set showstatuslinks=1
 set focuscontent
+set statuslinevisibility=visible
 
 source! ~/.vimperatorrc.local
 
